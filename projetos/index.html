@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebAtlas • Projetos</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Outfit:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #030303;
+            --accent: #5e81ff;
+            --accent-2: #c084fc;
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.07);
+            --text: #ffffff;
+            --text-dim: #94a3b8;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.5;
+        }
+
+        /* Efeito de Luz de Fundo */
+        .orb {
+            position: fixed;
+            width: 50vw;
+            height: 50vw;
+            background: radial-gradient(circle, rgba(94, 129, 255, 0.08) 0%, transparent 70%);
+            top: -20%;
+            right: -10%;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        /* HERO */
+        .hero {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 24px;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent);
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(40px, 8vw, 85px);
+            font-weight: 900;
+            line-height: 0.95;
+            letter-spacing: -0.04em;
+            margin-bottom: 24px;
+            background: linear-gradient(to bottom, #fff 40%, rgba(255,255,255,0.5));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: clamp(16px, 1.5vw, 20px);
+            color: var(--text-dim);
+            max-width: 650px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        /* BOTÕES */
+        .cta-group {
+            display: flex;
+            gap: 16px;
+        }
+
+        .btn-nasa {
+            padding: 18px 36px;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: var(--text);
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(255,255,255,0.2);
+        }
+
+        .btn-secondary {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            color: var(--text);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.1);
+            border-color: rgba(255,255,255,0.3);
+        }
+
+        /* GRID DE PROJETOS */
+        .section {
+            padding: 100px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-family: 'Outfit', sans-serif;
+            font-size: 32px;
+            margin-bottom: 48px;
+            font-weight: 700;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 24px;
+        }
+
+        .nasa-card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 24px;
+            transition: all 0.5s ease;
+            backdrop-filter: blur(12px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .nasa-card:hover {
+            border-color: var(--accent);
+            background: rgba(94, 129, 255, 0.05);
+            transform: translateY(-10px);
+        }
+
+        .card-tag {
+            font-size: 10px;
+            font-weight: 800;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 12px;
+            display: block;
+        }
+
+        .nasa-card h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 24px;
+            margin-bottom: 12px;
+        }
+
+        .nasa-card p {
+            color: var(--text-dim);
+            font-size: 15px;
+            margin-bottom: 24px;
+        }
+
+        /* RODAPÉ & CONTATO */
+        .contact-box {
+            background: linear-gradient(135deg, rgba(94,129,255,0.1) 0%, rgba(192,132,252,0.1) 100%);
+            border: 1px solid var(--border);
+            padding: 60px;
+            border-radius: 32px;
+            text-align: center;
+        }
+
+        footer {
+            padding: 60px 24px;
+            text-align: center;
+            color: #444;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .cta-group { flex-direction: column; width: 100%; }
+            .grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="orb"></div>
+
+    <header class="hero">
+        <div class="badge">Sistemas de Próxima Geração</div>
+        <h1>Design que<br>impulsiona lucro.</h1>
+        <p>Desenvolvemos ecossistemas digitais de alta performance para marcas que não aceitam o comum.</p>
+        
+        <div class="cta-group">
+            <a href="#projetos" class="btn-nasa btn-primary">Ver Portfólio</a>
+            <a href="https://wa.me/5575998053960?text=Olá! Gostaria de uma consultoria estratégica para meu próximo projeto digital." 
+               class="btn-nasa btn-secondary" target="_blank">
+               Agendar Consultoria
+            </a>
+        </div>
+    </header>
+
+    <section class="section" id="projetos">
+        <h2 class="section-title">Projetos em Destaque</h2>
+        <div class="grid">
+            <div class="nasa-card">
+                <div>
+                    <span class="card-tag">Automotivo • Live</span>
+                    <h3>GN Veículos</h3>
+                    <p>Plataforma de alta conversão otimizada para SEO e carregamento instantâneo.</p>
+                </div>
+                <a href="https://gnveiculos.com.br/" target="_blank" style="color: var(--text); text-decoration: none; font-weight: 600;">Explorar Case →</a>
+            </div>
+
+            <div class="nasa-card">
+                <div>
+                    <span class="card-tag">SaaS • Beta</span>
+                    <h3>WebAtlas Core</h3>
+                    <p>Arquitetura automatizada para gestão de landing pages em escala global.</p>
+                </div>
+                <span style="color: #444; font-size: 13px;">Lançamento em Breve</span>
+            </div>
+
+            <div class="nasa-card">
+                <div>
+                    <span class="card-tag">Fintech • Concept</span>
+                    <h3>Intelligence Dash</h3>
+                    <p>Visualização de dados complexos com interface intuitiva e minimalista.</p>
+                </div>
+                <span style="color: #444; font-size: 13px;">Internal Project</span>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="contact-box">
+            <h2 style="font-family: 'Outfit'; font-size: 42px; margin-bottom: 16px;">Vamos escalar?</h2>
+            <p style="color: var(--text-dim); margin-bottom: 32px; max-width: 500px; margin-left: auto; margin-right: auto;">
+                Não fazemos apenas sites. Construímos ativos digitais que geram receita 24/7.
+            </p>
+            <a href="https://wa.me/5575998053960?text=Olá! Vim pelo site e quero elevar o nível do meu negócio." 
+               class="btn-nasa btn-primary" target="_blank">
+               Falar com Especialista
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        &copy; 2026 WEBATLAS DIGITAL STRATEGY • BEYOND THE STANDARD
+    </footer>
+
+</body>
+</html>

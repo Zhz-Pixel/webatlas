@@ -1,0 +1,1445 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bin Garagem Film – Insulfilm Automotivo Premium em Campinas</title>
+  <meta name="description" content="Insulfilm automotivo profissional em Campinas. Conforto térmico, proteção UV, privacidade e estética premium. Solicite seu orçamento agora pelo WhatsApp!" />
+  <meta name="keywords" content="insulfilm Campinas, insulfilm perto de mim, película automotiva, insulfilm automotivo, insulfilm profissional" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000000;
+      --red: #e50000;
+      --red-dark: #b30000;
+      --red-glow: rgba(229,0,0,0.35);
+      --white: #ffffff;
+      --gray-100: #f5f5f5;
+      --gray-200: #e0e0e0;
+      --gray-400: #999;
+      --gray-700: #333;
+      --gray-800: #1a1a1a;
+      --gray-900: #0d0d0d;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--black);
+      color: var(--white);
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ===== NOISE TEXTURE OVERLAY ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    /* ===== SCROLL ANIMATIONS ===== */
+    .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left { opacity: 0; transform: translateX(-50px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(50px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ===== SECTION WRAPPER ===== */
+    section { position: relative; z-index: 1; }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 5%;
+      background: rgba(0,0,0,0.85);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(229,0,0,0.2);
+      transition: background 0.3s;
+    }
+    nav.scrolled { background: rgba(0,0,0,0.97); }
+    .nav-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+      letter-spacing: 0px;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .nav-logo span { color: var(--red); }
+    .nav-logo .logo-icon {
+      width: 36px; height: 36px;
+      background: var(--red);
+      clip-path: polygon(0 0, 85% 0, 100% 50%, 85% 100%, 0 100%, 15% 50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+    .nav-cta {
+      background: var(--red);
+      color: var(--white);
+      text-decoration: none;
+      padding: 10px 24px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+      clip-path: polygon(0 0, 95% 0, 100% 50%, 95% 100%, 0 100%);
+      padding-right: 30px;
+    }
+    .nav-cta:hover { background: var(--red-dark); box-shadow: 0 0 20px var(--red-glow); transform: translateX(3px); }
+
+    /* ===== HERO ===== */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      place-items: center;
+      position: relative;
+      overflow: hidden;
+      padding-top: 80px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(135deg, rgba(0,0,0,0.97) 0%, rgba(10,0,0,0.88) 40%, rgba(0,0,0,0.75) 100%),
+        url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?w=1600&q=80&auto=format') center/cover no-repeat;
+      z-index: 0;
+    }
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 50%, rgba(229,0,0,0.12) 0%, transparent 65%);
+    }
+    /* animated diagonal stripe */
+    .hero-stripe {
+      position: absolute;
+      top: 0; right: -200px;
+      width: 55%;
+      height: 100%;
+      background: linear-gradient(170deg, transparent 0%, rgba(229,0,0,0.04) 50%, transparent 100%);
+      border-left: 1px solid rgba(229,0,0,0.15);
+      transform: skewX(-8deg);
+      pointer-events: none;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+      padding: 0 5%;
+      text-align: left;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(229,0,0,0.12);
+      border: 1px solid rgba(229,0,0,0.4);
+      color: var(--red);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      padding: 7px 16px;
+      margin-bottom: 28px;
+      animation: fadeInDown 0.8s ease forwards;
+    }
+    .hero-badge::before { content: '●'; font-size: 8px; animation: pulse 1.5s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.3} }
+
+    .hero-headline {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(2.2rem, 6vw, 5rem);
+      line-height: 1.08;
+      letter-spacing: -1px;
+      font-weight: 900;
+      color: var(--white);
+      margin-bottom: 24px;
+      animation: fadeInUp 0.9s 0.2s ease both;
+    }
+    .hero-headline em {
+      font-style: normal;
+      color: var(--red);
+      display: block;
+    }
+    .hero-sub {
+      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.72);
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 44px;
+      animation: fadeInUp 0.9s 0.4s ease both;
+    }
+    .hero-sub strong { color: var(--white); font-weight: 600; }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.9s 0.6s ease both;
+    }
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--red);
+      color: var(--white);
+      text-decoration: none;
+      padding: 18px 40px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      position: relative;
+      overflow: hidden;
+      transition: box-shadow 0.3s, transform 0.2s;
+      clip-path: polygon(0 0, 94% 0, 100% 50%, 94% 100%, 0 100%);
+      padding-right: 50px;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255,255,255,0.1);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease;
+    }
+    .btn-primary:hover::before { transform: translateX(0); }
+    .btn-primary:hover { box-shadow: 0 8px 40px rgba(229,0,0,0.5); transform: translateY(-2px); }
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--white);
+      text-decoration: none;
+      padding: 18px 32px;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: 1px solid rgba(255,255,255,0.25);
+      transition: border-color 0.3s, background 0.3s;
+     
+    }
+    .btn-secondary:hover { border-color: var(--red); background: rgba(229,0,0,0.08); }
+
+    /* wapp icon */
+    .wapp-icon { font-size: 1.2em; }
+
+    .hero-stats {
+      position: absolute;
+      bottom: 50px;
+      left: 5%;
+      right: 5%;
+      z-index: 2;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.9s 0.8s ease both;
+    }
+    .stat-item { display: flex; flex-direction: column; }
+    .stat-num {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      color: var(--red);
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.78rem;
+      font-weight: 500;
+      color: rgba(255,255,255,0.5);
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+    }
+    .stat-divider { width: 1px; background: rgba(255,255,255,0.1); align-self: stretch; }
+
+    /* scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 30px;
+      right: 5%;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeIn 1s 1s ease both;
+    }
+    .scroll-indicator span {
+      font-size: 0.65rem;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      writing-mode: vertical-rl;
+    }
+    .scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--red), transparent);
+      animation: scrollAnim 2s infinite;
+    }
+    @keyframes scrollAnim { 0%{height:0;opacity:1} 100%{height:50px;opacity:0} }
+
+    @keyframes fadeInDown { from{opacity:0;transform:translateY(-20px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeInUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    /* ===== SECTION TITLES ===== */
+    .section-label {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .section-label::before { content: ''; display: block; width: 24px; height: 2px; background: var(--red); }
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+      line-height: 1.1;
+      letter-spacing: -0.5px;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--red); }
+    .section-sub {
+      font-size: 1rem;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      max-width: 520px;
+      line-height: 1.7;
+    }
+
+    /* ===== BENEFITS ===== */
+    #benefits {
+      padding: 100px 5%;
+      background: var(--gray-900);
+      position: relative;
+      overflow: hidden;
+    }
+    #benefits::before {
+      content: '';
+      position: absolute;
+      top: -1px; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--red), transparent);
+    }
+    .benefits-header { margin-bottom: 60px; }
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 2px;
+      background: rgba(229,0,0,0.08);
+      border: 1px solid rgba(229,0,0,0.12);
+    }
+    .benefit-card {
+      background: var(--gray-900);
+      padding: 44px 36px;
+      position: relative;
+      overflow: hidden;
+      transition: background 0.3s;
+      cursor: default;
+    }
+    .benefit-card::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0;
+      width: 0; height: 3px;
+      background: var(--red);
+      transition: width 0.4s ease;
+    }
+    .benefit-card:hover { background: #111; }
+    .benefit-card:hover::after { width: 100%; }
+    .benefit-icon {
+      width: 56px; height: 56px;
+      border: 1px solid rgba(229,0,0,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      font-size: 1.6rem;
+      position: relative;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .benefit-card:hover .benefit-icon { border-color: var(--red); background: rgba(229,0,0,0.1); }
+    .benefit-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .benefit-desc { font-size: 0.9rem; color: rgba(255,255,255,0.5); line-height: 1.7; font-weight: 300; }
+
+    /* ===== SERVICES ===== */
+    #services {
+      padding: 100px 5%;
+      background: var(--black);
+      position: relative;
+    }
+    .services-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+      margin-top: 60px;
+    }
+    .services-intro { }
+    .services-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: rgba(229,0,0,0.06);
+    }
+    .service-card {
+      background: var(--black);
+      padding: 32px 28px;
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: border-color 0.3s, transform 0.3s;
+      position: relative;
+    }
+    .service-card:hover { border-color: rgba(229,0,0,0.3); transform: translateY(-4px); }
+    .service-num {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 2.5rem;
+      color: rgba(229,0,0,0.15);
+      line-height: 1;
+      margin-bottom: 8px;
+      transition: color 0.3s;
+    }
+    .service-card:hover .service-num { color: rgba(229,0,0,0.35); }
+    .service-name {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+    .service-desc { font-size: 0.82rem; color: rgba(255,255,255,0.45); line-height: 1.65; }
+    .service-tag {
+      display: inline-block;
+      margin-top: 14px;
+      font-size: 0.65rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      border: 1px solid rgba(229,0,0,0.3);
+      padding: 3px 10px;
+    }
+    .services-cta-block { margin-top: 40px; }
+    .services-cta-block p { color: rgba(255,255,255,0.5); font-size: 0.9rem; margin-bottom: 20px; line-height: 1.6; }
+
+    /* ===== BEFORE/AFTER ===== */
+    #before-after {
+      padding: 100px 5%;
+      background: var(--gray-900);
+      position: relative;
+      overflow: hidden;
+    }
+    #before-after::before {
+      content: 'TRANSFORMAÇÃO';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      font-family: 'Poppins', sans-serif;
+      font-size: clamp(6rem, 18vw, 16rem);
+      color: rgba(229,0,0,0.03);
+      white-space: nowrap;
+      pointer-events: none;
+      letter-spacing: 10px;
+      z-index: 0;
+    }
+    .ba-header { text-align: center; margin-bottom: 60px; position: relative; z-index: 1; }
+    .ba-header .section-label { justify-content: center; }
+    .ba-header .section-label::before { display: none; }
+    .ba-header .section-sub { margin: 0 auto; text-align: center; }
+    .ba-container {
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+      z-index: 1;
+    }
+    .ba-slider-wrap {
+      position: relative;
+      width: 100%;
+      height: 420px;
+      overflow: hidden;
+      border: 1px solid rgba(229,0,0,0.2);
+      cursor: col-resize;
+      user-select: none;
+    }
+    .ba-after, .ba-before {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 2.5rem;
+      letter-spacing: 4px;
+    }
+    .ba-after {
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a0000 50%, #0a0a0a 100%);
+      color: var(--red);
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ba-after .ba-label-sub { font-size: 0.85rem; font-family: 'Poppins', sans-serif; font-weight: 300; color: rgba(255,255,255,0.4); letter-spacing: 3px; text-transform: uppercase; }
+    .ba-before {
+      background: linear-gradient(135deg, #222 0%, #333 50%, #222 100%);
+      color: rgba(255,255,255,0.5);
+      flex-direction: column;
+      gap: 12px;
+    }
+    .ba-before .ba-label-sub { font-size: 0.85rem; font-family: 'Poppins', sans-serif; font-weight: 300; color: rgba(255,255,255,0.3); letter-spacing: 3px; text-transform: uppercase; }
+    .ba-clip {
+      position: absolute;
+      inset: 0;
+      clip-path: inset(0 50% 0 0);
+      transition: clip-path 0s;
+    }
+    .ba-divider {
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 3px;
+      background: var(--red);
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    .ba-divider::before, .ba-divider::after {
+      content: '';
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 44px; height: 44px;
+      background: var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .ba-divider::before { top: 50%; transform: translate(-50%, -50%); background: var(--red); }
+    .ba-handle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 44px; height: 44px;
+      background: var(--red);
+      border-radius: 50%;
+      z-index: 11;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      font-weight: 700;
+      box-shadow: 0 0 20px rgba(229,0,0,0.6);
+      cursor: grab;
+    }
+    .ba-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 16px;
+    }
+    .ba-tag {
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 6px 18px;
+      border: 1px solid;
+    }
+    .ba-tag.before { border-color: rgba(255,255,255,0.2); color: rgba(255,255,255,0.5); }
+    .ba-tag.after { border-color: var(--red); color: var(--red); }
+    .ba-note { text-align: center; margin-top: 12px; font-size: 0.78rem; color: rgba(255,255,255,0.3); letter-spacing: 1px; }
+
+    /* ===== HOW IT WORKS ===== */
+    #how {
+      padding: 100px 5%;
+      background: var(--black);
+    }
+    .how-header { text-align: center; margin-bottom: 70px; }
+    .how-header .section-label { justify-content: center; }
+    .how-header .section-label::before { display: none; }
+    .how-header .section-sub { margin: 0 auto; text-align: center; }
+    .steps-track {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      position: relative;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .steps-track::before {
+      content: '';
+      position: absolute;
+      top: 38px;
+      left: calc(16.6% + 20px);
+      right: calc(16.6% + 20px);
+      height: 1px;
+      background: linear-gradient(to right, var(--red) 0%, rgba(229,0,0,0.3) 50%, var(--red) 100%);
+    }
+    .step {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+    .step-circle {
+      width: 76px; height: 76px;
+      border: 2px solid var(--red);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--red);
+      margin-bottom: 28px;
+      background: var(--black);
+      position: relative;
+      z-index: 1;
+      transition: background 0.3s, color 0.3s;
+      flex-shrink: 0;
+    }
+    .step:hover .step-circle { background: var(--red); color: var(--white); }
+    .step-icon { font-size: 2rem; margin-bottom: 28px; background: var(--black); padding: 10px; position: relative; z-index: 1; }
+    .step-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+    .step-desc { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.7; }
+
+    /* ===== TESTIMONIALS ===== */
+    #testimonials {
+      padding: 100px 5%;
+      background: var(--gray-900);
+      position: relative;
+      overflow: hidden;
+    }
+    #testimonials::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(to right, transparent, var(--red), transparent);
+    }
+    .testi-header { margin-bottom: 60px; }
+    .testi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2px;
+      background: rgba(229,0,0,0.06);
+    }
+    .testi-card {
+      background: var(--gray-900);
+      padding: 40px 36px;
+      position: relative;
+      border: 1px solid rgba(255,255,255,0.04);
+      transition: border-color 0.3s;
+    }
+    .testi-card:hover { border-color: rgba(229,0,0,0.25); }
+    .testi-quote {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 900;
+      font-size: 4rem;
+      color: var(--red);
+      line-height: 0.8;
+      margin-bottom: 20px;
+      opacity: 0.6;
+    }
+    .testi-stars { color: var(--red); font-size: 0.85rem; letter-spacing: 3px; margin-bottom: 16px; }
+    .testi-text {
+      font-size: 0.92rem;
+      color: rgba(255,255,255,0.65);
+      line-height: 1.8;
+      font-style: italic;
+      margin-bottom: 28px;
+      font-weight: 300;
+    }
+    .testi-author { display: flex; align-items: center; gap: 14px; }
+    .testi-avatar {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--red-dark), #500);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.2rem;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .testi-name {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      letter-spacing: 0.5px;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+    .testi-city { font-size: 0.75rem; color: rgba(255,255,255,0.35); letter-spacing: 1px; }
+
+    /* ===== MID CTA ===== */
+    #mid-cta {
+      padding: 80px 5%;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .mid-cta-inner {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    #mid-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(229,0,0,0.08) 0%, transparent 70%);
+    }
+    .mid-cta-inner .section-title { font-size: clamp(1.8rem, 4vw, 3rem); margin-bottom: 20px; }
+    .mid-cta-inner p { font-size: 1.05rem; color: rgba(255,255,255,0.55); margin-bottom: 40px; font-weight: 300; }
+    .btn-primary.large { padding: 22px 56px; font-size: 1.1rem; padding-right: 70px; }
+
+    /* ===== DIFFERENTIALS ===== */
+    #differentials {
+      padding: 100px 5%;
+      background: linear-gradient(to bottom, var(--gray-900), var(--black));
+    }
+    .diff-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 2px;
+      margin-top: 60px;
+      background: rgba(229,0,0,0.06);
+    }
+    .diff-card {
+      background: var(--black);
+      padding: 40px 32px;
+      border: 1px solid rgba(255,255,255,0.04);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.3s, background 0.3s;
+    }
+    .diff-card:hover { border-color: rgba(229,0,0,0.3); background: #080808; }
+    .diff-icon-wrap {
+      width: 52px; height: 52px;
+      border: 1px solid rgba(229,0,0,0.25);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: background 0.3s;
+    }
+    .diff-card:hover .diff-icon-wrap { background: rgba(229,0,0,0.1); border-color: var(--red); }
+    .diff-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .diff-desc { font-size: 0.85rem; color: rgba(255,255,255,0.45); line-height: 1.65; font-weight: 300; }
+    .diff-check {
+      font-size: 0.75rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-top: auto;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* ===== FINAL CTA ===== */
+    #final-cta {
+      padding: 120px 5%;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+    }
+    .final-cta-bg {
+      position: absolute;
+      inset: 0;
+      background: 
+        radial-gradient(ellipse at 20% 50%, rgba(229,0,0,0.12) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 50%, rgba(229,0,0,0.07) 0%, transparent 60%);
+    }
+    /* animated border top/bottom */
+    #final-cta::before, #final-cta::after {
+      content: '';
+      position: absolute;
+      left: 5%; right: 5%;
+      height: 1px;
+    }
+    #final-cta::before { top: 0; background: linear-gradient(to right, transparent, var(--red), transparent); }
+    #final-cta::after { bottom: 0; background: linear-gradient(to right, transparent, rgba(229,0,0,0.3), transparent); }
+    .final-cta-inner {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+    .final-cta-inner .section-title { font-size: clamp(2rem, 5.5vw, 4rem); margin-bottom: 20px; }
+    .final-cta-inner .section-sub { margin: 0 auto 50px; text-align: center; font-size: 1.1rem; }
+    .final-cta-inner .btn-primary.large { font-size: 1.15rem; }
+    .final-cta-note {
+      margin-top: 24px;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.25);
+      letter-spacing: 1px;
+    }
+
+    /* ===== FOOTER ===== */
+    footer {
+      background: var(--gray-900);
+      padding: 50px 5% 30px;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-bottom: 40px;
+    }
+    .footer-logo {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.4rem;
+      letter-spacing: 0px;
+      text-transform: uppercase;
+      color: var(--white);
+      text-decoration: none;
+    }
+    .footer-logo span { color: var(--red); }
+    .footer-info { text-align: center; }
+    .footer-city {
+      font-size: 0.75rem;
+      font-family: 'Poppins', sans-serif;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.35);
+      margin-bottom: 6px;
+    }
+    .footer-wapp {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--white);
+      text-decoration: none;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      transition: color 0.2s;
+    }
+    .footer-wapp:hover { color: var(--red); }
+    .footer-social { display: flex; gap: 12px; }
+    .social-btn {
+      width: 40px; height: 40px;
+      border: 1px solid rgba(255,255,255,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(255,255,255,0.4);
+      text-decoration: none;
+      font-size: 1rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+    .social-btn:hover { border-color: var(--red); color: var(--red); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.05);
+      padding-top: 24px;
+      text-align: center;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.5px;
+    }
+    .footer-bottom span { color: var(--red); }
+
+    /* ===== STICKY WHATSAPP ===== */
+    .sticky-wapp {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+    .sticky-wapp-btn {
+      width: 60px; height: 60px;
+      background: #25d366;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      text-decoration: none;
+      color: var(--white);
+      box-shadow: 0 6px 30px rgba(37,211,102,0.45);
+      transition: transform 0.3s, box-shadow 0.3s;
+      animation: bounceIn 1s 2s ease both;
+    }
+    .sticky-wapp-btn:hover { transform: scale(1.12); box-shadow: 0 10px 40px rgba(37,211,102,0.6); }
+    .sticky-wapp-tooltip {
+      background: var(--gray-800);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      white-space: nowrap;
+      opacity: 0;
+      transform: translateX(10px);
+      transition: opacity 0.3s, transform 0.3s;
+      pointer-events: none;
+      border-left: 3px solid #25d366;
+    }
+    .sticky-wapp:hover .sticky-wapp-tooltip { opacity: 1; transform: translateX(0); }
+    .sticky-pulse {
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background: rgba(37,211,102,0.35);
+      animation: wappPulse 2.5s infinite;
+    }
+    @keyframes wappPulse { 0%{transform:scale(1);opacity:1} 100%{transform:scale(1.8);opacity:0} }
+    @keyframes bounceIn { 0%{transform:scale(0);opacity:0} 60%{transform:scale(1.1)} 100%{transform:scale(1);opacity:1} }
+
+    /* ===== SECTION CONTAINER ===== */
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 900px) {
+      .services-layout { grid-template-columns: 1fr; gap: 50px; }
+      .steps-track { flex-direction: column; gap: 40px; align-items: center; }
+      .steps-track::before { display: none; }
+      .hero-stats { position: static; padding: 40px 5% 0; }
+      .hero-content { padding-bottom: 0; }
+      #hero { padding-bottom: 40px; }
+    }
+    @media (max-width: 600px) {
+      .nav-logo .logo-icon { display: none; }
+      .btn-primary, .btn-secondary { padding: 15px 28px; font-size: 0.9rem; }
+      .btn-primary { padding-right: 36px; }
+      .btn-primary.large { padding: 18px 32px; padding-right: 42px; font-size: 1rem; }
+      .testi-grid { grid-template-columns: 1fr; }
+      .ba-slider-wrap { height: 260px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .footer-inner { flex-direction: column; text-align: center; }
+      .footer-info { order: -1; }
+      .sticky-wapp { bottom: 16px; right: 16px; }
+      .hero-stats { gap: 24px; }
+      .stat-divider { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav id="navbar">
+    <a href="#hero" class="nav-logo">
+      <div class="logo-icon">◆</div>
+      Bin Garagem <span>Film</span>
+    </a>
+    <a href="https://wa.me/5519995667298?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento%20de%20insulfilm" target="_blank" rel="noopener" class="nav-cta">
+      ● Orçamento Grátis
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-stripe"></div>
+    <div class="hero-content">
+      <div class="hero-badge">✦ Campinas · Serviço Premium · Desde 2015</div>
+      <h1 class="hero-headline">
+        Proteja seu carro com<br>
+        <em>insulfilm profissional</em>
+        de alto padrão
+      </h1>
+      <p class="hero-sub">
+        Conforto térmico real, <strong>bloqueio de raios UV</strong>, privacidade máxima e estética que eleva o nível do seu veículo. Aplicação rápida, resultado definitivo.
+      </p>
+      <div class="hero-buttons">
+        <a href="https://wa.me/5519995667298?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento%20de%20insulfilm" target="_blank" rel="noopener" class="btn-primary">
+          <span class="wapp-icon">📲</span> Solicitar Orçamento no WhatsApp
+        </a>
+        <a href="#benefits" class="btn-secondary" >Ver Benefícios ↓</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">+500</span>
+        <span class="stat-label">Carros atendidos</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">99%</span>
+        <span class="stat-label">Satisfação garantida</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">10+</span>
+        <span class="stat-label">Anos de experiência</span>
+      </div>
+      <div class="stat-divider"></div>
+      <div class="stat-item">
+        <span class="stat-num">24h</span>
+        <span class="stat-label">Resposta rápida</span>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <div class="scroll-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="benefits">
+    <div class="container">
+      <div class="benefits-header reveal">
+        <div class="section-label">Por que escolher insulfilm</div>
+        <h2 class="section-title">4 razões que vão <span>mudar sua direção</span></h2>
+        <p class="section-sub">Muito mais do que estética — é proteção inteligente para você, sua família e seu carro.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card reveal" style="transition-delay:0.1s">
+          <div class="benefit-icon">🌡️</div>
+          <h3 class="benefit-title">Redução de Calor Interno</h3>
+          <p class="benefit-desc">Reduza até 65% do calor que entra pelo vidro. Dirija com conforto mesmo nos dias mais quentes sem depender só do ar-condicionado.</p>
+        </div>
+        <div class="benefit-card reveal" style="transition-delay:0.2s">
+          <div class="benefit-icon">☀️</div>
+          <h3 class="benefit-title">Bloqueio de Raios UV</h3>
+          <p class="benefit-desc">Nossas películas bloqueiam até 99% dos raios ultravioleta — protegendo sua pele e preservando o interior do veículo por muito mais tempo.</p>
+        </div>
+        <div class="benefit-card reveal" style="transition-delay:0.3s">
+          <div class="benefit-icon">🕶️</div>
+          <h3 class="benefit-title">Privacidade Máxima</h3>
+          <p class="benefit-desc">Veja o mundo lá fora sem que ninguém veja você. Mais segurança para você e seus pertences, sem abrir mão da visibilidade ao dirigir.</p>
+        </div>
+        <div class="benefit-card reveal" style="transition-delay:0.4s">
+          <div class="benefit-icon">💎</div>
+          <h3 class="benefit-title">Estética Premium</h3>
+          <p class="benefit-desc">O insulfilm transforma visualmente qualquer veículo. Acabamento impecável que valoriza o carro e torna cada detalhe mais sofisticado.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="services-layout">
+        <div class="services-intro reveal-left">
+          <div class="section-label">Nossos Serviços</div>
+          <h2 class="section-title">Películas para <span>cada necessidade</span></h2>
+          <p class="section-sub">Trabalhamos com as melhores marcas do mercado, oferecendo opções para diferentes orçamentos sem jamais abrir mão da qualidade de aplicação.</p>
+          <div class="services-cta-block">
+            <p>Não sabe qual película escolher? Fale com a gente pelo WhatsApp e tiramos todas as suas dúvidas em segundos.</p>
+            <a href="https://wa.me/5519995667298?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento%20de%20insulfilm" target="_blank" rel="noopener" class="btn-primary">
+              <span class="wapp-icon">💬</span> Tirar Dúvidas no WhatsApp
+            </a>
+          </div>
+        </div>
+        <div class="services-grid reveal-right">
+          <div class="service-card">
+            <div class="service-num">01</div>
+            <div class="service-name">Insulfilm Básico</div>
+            <p class="service-desc">Excelente custo-benefício. Proteção solar e privacidade para quem busca o essencial com qualidade garantida.</p>
+            <span class="service-tag">Econômico</span>
+          </div>
+          <div class="service-card">
+            <div class="service-num">02</div>
+            <div class="service-name">Película Premium</div>
+            <p class="service-desc">Alta rejeição de calor e UV. Durabilidade superior, cores uniformes e acabamento de alto padrão.</p>
+            <span class="service-tag">Mais Vendido</span>
+          </div>
+          <div class="service-card">
+            <div class="service-num">03</div>
+            <div class="service-name">Película Nanocerâmica</div>
+            <p class="service-desc">O topo de linha. Máxima eficiência térmica sem interferência em sinal GPS ou telefonia. Tecnologia de ponta.</p>
+            <span class="service-tag">Premium</span>
+          </div>
+          <div class="service-card">
+            <div class="service-num">04</div>
+            <div class="service-name">Insulfilm Parabrisa</div>
+            <p class="service-desc">Proteção solar sem perda de visibilidade. Aplicação técnica especializada com película homologada pelo Detran.</p>
+            <span class="service-tag">Especialidade</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BEFORE / AFTER -->
+  <section id="before-after">
+    <div class="ba-header reveal">
+      <div class="section-label">Antes e Depois</div>
+      <h2 class="section-title">Veja a <span>transformação</span></h2>
+      <p class="section-sub">Arraste o divisor e compare como o insulfilm profissional muda completamente o visual e o conforto do veículo.</p>
+    </div>
+    <div class="ba-container reveal">
+      <div class="ba-slider-wrap" id="baSlider">
+        <!-- BEFORE -->
+        <div class="ba-before">
+          <span>SEM INSULFILM</span>
+          <span class="ba-label-sub">Exposição ao sol · Sem privacidade</span>
+        </div>
+        <!-- AFTER -->
+        <div class="ba-after ba-clip" id="baClip">
+          <span>COM INSULFILM</span>
+          <span class="ba-label-sub">Conforto · Proteção · Elegância</span>
+        </div>
+        <div class="ba-divider" id="baDivider">
+          <div class="ba-handle" id="baHandle">⇔</div>
+        </div>
+      </div>
+      <div class="ba-labels">
+        <span class="ba-tag before">◁ Antes</span>
+        <span class="ba-tag after">Depois ▷</span>
+      </div>
+      <p class="ba-note">↔ Arraste para comparar</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="how">
+    <div class="container">
+      <div class="how-header reveal">
+        <div class="section-label">Como Funciona</div>
+        <h2 class="section-title">Simples, rápido e <span>sem complicação</span></h2>
+        <p class="section-sub">Do primeiro contato à aplicação final, cuidamos de tudo para você ter a melhor experiência.</p>
+      </div>
+      <div class="steps-track">
+        <div class="step reveal" style="transition-delay:0.1s">
+          <div class="step-circle">1</div>
+          <h3 class="step-title">Contato via WhatsApp</h3>
+          <p class="step-desc">Mande uma mensagem, tire dúvidas e receba seu orçamento grátis em minutos. Sem burocracia, sem enrolação.</p>
+        </div>
+        <div class="step reveal" style="transition-delay:0.25s">
+          <div class="step-circle">2</div>
+          <h3 class="step-title">Agendamento Rápido</h3>
+          <p class="step-desc">Escolhemos juntos o melhor horário para você. Agendamento flexível e confirmação imediata pelo WhatsApp.</p>
+        </div>
+        <div class="step reveal" style="transition-delay:0.4s">
+          <div class="step-circle">3</div>
+          <h3 class="step-title">Aplicação Profissional</h3>
+          <p class="step-desc">Nossa equipe aplica com precisão cirúrgica. Seu carro sai transformado, com garantia por escrito do serviço.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="testimonials">
+    <div class="container">
+      <div class="testi-header reveal">
+        <div class="section-label">Depoimentos</div>
+        <h2 class="section-title">O que dizem nossos <span>clientes</span></h2>
+        <p class="section-sub">Mais de 500 clientes satisfeitos em Campinas e região. Veja o que eles falam.</p>
+      </div>
+      <div class="testi-grid">
+        <div class="testi-card reveal" style="transition-delay:0.1s">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Fiz o insulfilm no meu Corolla e a diferença foi absurda. O carro ficou muito mais fresco, e a estética ficou incrível. Aplicação perfeita, sem bolhas, sem nada. Recomendo demais!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">RL</div>
+            <div>
+              <div class="testi-name">Rafael Lima</div>
+              <div class="testi-city">Cambuí, Campinas</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:0.2s">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Atendimento rápido, preço justo e resultado impecável. Fiz a película nanocerâmica e o carro ficou muito mais silencioso e confortável. Vale muito o investimento!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">AS</div>
+            <div>
+              <div class="testi-name">Ana Santos</div>
+              <div class="testi-city">Taquaral, Campinas</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:0.3s">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Já tinha tentado insulfilm em outro lugar e a experiência foi péssima. Aqui foi completamente diferente. Profissionalismo do início ao fim. Meu SUV ficou outro!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">MC</div>
+            <div>
+              <div class="testi-name">Marcos Costa</div>
+              <div class="testi-city">Barão Geraldo, Campinas</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:0.4s">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Super indico! Fui pelo WhatsApp, fui atendida na hora, agendei para o dia seguinte e o serviço foi rápido e perfeito. Minha HR-V ficou linda e muito mais privada.</p>
+          <div class="testi-author">
+            <div class="testi-avatar">JP</div>
+            <div>
+              <div class="testi-name">Juliana Pereira</div>
+              <div class="testi-city">Jardim Campineiro, Campinas</div>
+            </div>
+          </div>
+        </div>
+        <div class="testi-card reveal" style="transition-delay:0.5s">
+          <div class="testi-quote">"</div>
+          <div class="testi-stars">★★★★★</div>
+          <p class="testi-text">Cara, que serviço impecável. Garagem organizada, equipe pontual e resultado de primeira. Voltarei para fazer no segundo carro da família com certeza!</p>
+          <div class="testi-author">
+            <div class="testi-avatar">TO</div>
+            <div>
+              <div class="testi-name">Thiago Oliveira</div>
+              <div class="testi-city">Sousas, Campinas</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MID CTA -->
+  <section id="mid-cta">
+    <div class="mid-cta-inner reveal">
+      <div class="section-label" style="justify-content:center;">
+        <span style="display:none"></span>Oferta Especial
+      </div>
+      <h2 class="section-title">Seu carro mais <span>confortável, seguro</span> e elegante começa aqui</h2>
+      <p>Não espere mais para ter o carro que você merece. Solicite agora seu orçamento gratuito e receba atendimento imediato pelo WhatsApp.</p>
+      <a href="https://wa.me/5519995667298?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento%20de%20insulfilm" target="_blank" rel="noopener" class="btn-primary large">
+        <span class="wapp-icon">📲</span> Quero Meu Orçamento Grátis
+      </a>
+    </div>
+  </section>
+
+  <!-- DIFFERENTIALS -->
+  <section id="differentials">
+    <div class="container">
+      <div class="reveal" style="text-align:center; margin-bottom:0;">
+        <div class="section-label" style="justify-content:center;">Nossos Diferenciais</div>
+        <h2 class="section-title">Por que somos a <span>melhor escolha</span></h2>
+      </div>
+      <div class="diff-grid">
+        <div class="diff-card reveal" style="transition-delay:0.1s">
+          <div class="diff-icon-wrap">⚡</div>
+          <div class="diff-title">Atendimento Rápido</div>
+          <p class="diff-desc">Respondemos no WhatsApp em minutos. Agendamento em 24h. Você não perde tempo nem deixa o carro parado.</p>
+          <span class="diff-check">✔ Garantido</span>
+        </div>
+        <div class="diff-card reveal" style="transition-delay:0.2s">
+          <div class="diff-icon-wrap">🏆</div>
+          <div class="diff-title">Qualidade Profissional</div>
+          <p class="diff-desc">Aplicação por técnicos especializados, com anos de experiência e resultados comprovados em centenas de veículos.</p>
+          <span class="diff-check">✔ Certificado</span>
+        </div>
+        <div class="diff-card reveal" style="transition-delay:0.3s">
+          <div class="diff-icon-wrap">💠</div>
+          <div class="diff-title">Materiais de Alto Padrão</div>
+          <p class="diff-desc">Trabalhamos apenas com películas de marcas líderes de mercado, com certificação e desempenho comprovado.</p>
+          <span class="diff-check">✔ Marcas Premium</span>
+        </div>
+        <div class="diff-card reveal" style="transition-delay:0.4s">
+          <div class="diff-icon-wrap">🛡️</div>
+          <div class="diff-title">Garantia do Serviço</div>
+          <p class="diff-desc">Todos os nossos serviços têm garantia por escrito. Qualquer problema, estamos aqui para resolver sem custo adicional.</p>
+          <span class="diff-check">✔ Por Escrito</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="final-cta">
+    <div class="final-cta-bg"></div>
+    <div class="final-cta-inner">
+      <div class="reveal">
+        <div class="section-label" style="justify-content:center;">Pronto para começar?</div>
+        <h2 class="section-title">Pronto para <span>transformar</span> seu carro?</h2>
+        <p class="section-sub">Fale agora com nossa equipe e peça seu orçamento gratuito. É rápido, sem compromisso e você já sai com a data agendada.</p>
+        <a href="https://wa.me/5519995667298?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento%20de%20insulfilm" target="_blank" rel="noopener" class="btn-primary large">
+          <span class="wapp-icon">📲</span> Falar Agora no WhatsApp
+        </a>
+        <p class="final-cta-note">⚡ Resposta em minutos · Orçamento 100% gratuito · Sem compromisso</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <a href="#hero" class="footer-logo">Bin Garagem <span>Film</span></a>
+      <div class="footer-info">
+        <p class="footer-city">📍 Campinas, São Paulo</p>
+        <a href="https://wa.me/5519995667298?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento%20de%20insulfilm" target="_blank" rel="noopener" class="footer-wapp">
+          📱 (19) 99566-7298
+        </a>
+      </div>
+      <div class="footer-social">
+        <a href="https://wa.me/5519995667298?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento%20de%20insulfilm" target="_blank" rel="noopener" class="social-btn" title="WhatsApp">📲</a>
+        <a href="#" class="social-btn" title="Instagram">📸</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      © 2025 <span>Bin Garagem Film</span> · Insulfilm Automotivo Premium em Campinas · Todos os direitos reservados
+    </div>
+  </footer>
+
+  <!-- STICKY WHATSAPP -->
+  <div class="sticky-wapp">
+    <div class="sticky-wapp-tooltip">Solicitar Orçamento</div>
+    <a href="https://wa.me/5519995667298?text=Olá%2C%20vim%20pelo%20site%20e%20quero%20um%20orçamento%20de%20insulfilm" target="_blank" rel="noopener" class="sticky-wapp-btn" title="Chamar no WhatsApp">
+      <div class="sticky-pulse"></div>
+      📱
+    </a>
+  </div>
+
+  <script>
+    // ===== NAVBAR SCROLL =====
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    // ===== SCROLL REVEAL =====
+    const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    // ===== BEFORE/AFTER SLIDER =====
+    const slider = document.getElementById('baSlider');
+    const clip = document.getElementById('baClip');
+    const handle = document.getElementById('baHandle');
+    const divider = document.getElementById('baDivider');
+    let dragging = false;
+
+    function setPos(x) {
+      const rect = slider.getBoundingClientRect();
+      let pct = Math.max(0, Math.min(100, ((x - rect.left) / rect.width) * 100));
+      clip.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+      divider.style.left = pct + '%';
+    }
+
+    // auto-animate on load
+    let autoAnimDone = false;
+    function autoAnim() {
+      if (autoAnimDone) return;
+      autoAnimDone = true;
+      let pct = 50, dir = -1;
+      let steps = 0;
+      const iv = setInterval(() => {
+        pct += dir * 1.5;
+        if (pct <= 20) dir = 1;
+        if (pct >= 50) { clearInterval(iv); }
+        clip.style.clipPath = `inset(0 ${100 - pct}% 0 0)`;
+        divider.style.left = pct + '%';
+      }, 16);
+    }
+    const sliderObs = new IntersectionObserver(entries => {
+      if (entries[0].isIntersecting) { setTimeout(autoAnim, 600); }
+    }, { threshold: 0.5 });
+    sliderObs.observe(slider);
+
+    slider.addEventListener('mousedown', e => { dragging = true; setPos(e.clientX); });
+    slider.addEventListener('touchstart', e => { dragging = true; setPos(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('mousemove', e => { if (dragging) setPos(e.clientX); });
+    window.addEventListener('touchmove', e => { if (dragging) setPos(e.touches[0].clientX); }, { passive: true });
+    window.addEventListener('mouseup', () => { dragging = false; });
+    window.addEventListener('touchend', () => { dragging = false; });
+
+    // ===== SMOOTH ANCHOR SCROLL =====
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

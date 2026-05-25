@@ -1,0 +1,1286 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GeraMais Energia Solar – Economize até 95% na sua conta</title>
+  <meta name="description" content="Instale energia solar com a GeraMais e economize até 95% na sua conta de luz. Orçamento gratuito pelo WhatsApp." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* =============================================
+       RESET & BASE
+    ============================================= */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #071428;
+      --blue:    #1a56db;
+      --sky:     #38bdf8;
+      --white:   #ffffff;
+      --light:   #f0f6ff;
+      --muted:   #6b7f9e;
+      --text:    #111827;
+      --wpp:     #25D366;
+      --wpp-h:   #1aab52;
+      --radius:  16px;
+      --shadow:  0 8px 40px rgba(26,86,219,.15);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .display {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    img { max-width: 100%; display: block; }
+    a  { text-decoration: none; color: inherit; }
+
+    /* =============================================
+       ANIMATIONS
+    ============================================= */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,.5); }
+      50%       { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50%       { transform: translateY(-10px); }
+    }
+    @keyframes rotateGlow {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+    @keyframes countUp {
+      from { opacity: 0; transform: scale(.7); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+
+    .fade-up  { animation: fadeUp .7s ease both; }
+    .fade-in  { animation: fadeIn .8s ease both; }
+
+    /* Scroll-triggered reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* =============================================
+       NAV
+    ============================================= */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 5%;
+      background: rgba(7,20,40,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 800;
+      color: var(--white);
+      letter-spacing: -0.5px;
+    }
+    .logo-icon {
+      width: 36px; height: 36px;
+      background: linear-gradient(135deg, #f59e0b, #fbbf24);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .logo span { color: var(--sky); }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--wpp);
+      color: var(--white);
+      font-weight: 700;
+      font-size: .88rem;
+      padding: 10px 20px;
+      border-radius: 50px;
+      transition: background .25s, transform .2s;
+    }
+    .nav-cta:hover { background: var(--wpp-h); transform: scale(1.04); }
+
+    /* =============================================
+       HERO
+    ============================================= */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(135deg, var(--navy) 0%, #0d2251 60%, #0f2d6b 100%);
+      position: relative;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 120px 5% 80px;
+    }
+
+    /* Decorative glow orbs */
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 560px; height: 560px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(56,189,248,.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: -80px;
+      width: 400px; height: 400px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,86,219,.2) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Grid pattern overlay */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(56,189,248,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(56,189,248,.04) 1px, transparent 1px);
+      background-size: 50px 50px;
+      pointer-events: none;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(56,189,248,.12);
+      border: 1px solid rgba(56,189,248,.3);
+      color: var(--sky);
+      font-size: .82rem;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: 8px 16px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+      animation: fadeUp .6s ease both;
+    }
+
+    .hero-title {
+      font-size: clamp(2.4rem, 5.5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.1;
+      margin-bottom: 24px;
+      animation: fadeUp .7s .1s ease both;
+    }
+    .hero-title .highlight {
+      color: var(--sky);
+      position: relative;
+    }
+    .hero-title .percent {
+      color: #fbbf24;
+      display: inline-block;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .hero-sub {
+      font-size: 1.12rem;
+      color: rgba(255,255,255,.72);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      animation: fadeUp .7s .2s ease both;
+      max-width: 520px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      align-items: center;
+      animation: fadeUp .7s .3s ease both;
+    }
+
+    .btn-wpp {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--wpp);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+      padding: 18px 32px;
+      border-radius: 50px;
+      animation: pulse 2.4s ease-in-out infinite;
+      transition: background .25s, transform .2s, box-shadow .2s;
+    }
+    .btn-wpp:hover {
+      background: var(--wpp-h);
+      transform: translateY(-3px) scale(1.03);
+      box-shadow: 0 16px 40px rgba(37,211,102,.4);
+      animation: none;
+    }
+
+    .btn-secondary {
+      color: rgba(255,255,255,.8);
+      font-weight: 600;
+      font-size: .95rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid rgba(255,255,255,.3);
+      padding-bottom: 2px;
+      transition: color .2s, border-color .2s;
+    }
+    .btn-secondary:hover { color: var(--sky); border-color: var(--sky); }
+
+    /* Stats strip */
+    .hero-stats {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin-top: 56px;
+      animation: fadeUp .7s .4s ease both;
+    }
+    .stat { color: var(--white); }
+    .stat-number {
+      font-family: 'Poppins', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fbbf24;
+      line-height: 1;
+    }
+    .stat-label {
+      font-size: .82rem;
+      color: rgba(255,255,255,.55);
+      margin-top: 4px;
+    }
+
+    /* Hero visual */
+    .hero-visual {
+      position: absolute;
+      right: 4%;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 1;
+      animation: fadeIn 1s .4s ease both;
+    }
+
+    .solar-panel-svg {
+      width: min(480px, 42vw);
+      filter: drop-shadow(0 20px 60px rgba(56,189,248,.3));
+    }
+
+    /* =============================================
+       SECTION COMMONS
+    ============================================= */
+    section { padding: 96px 5%; }
+
+    .section-label {
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(1.9rem, 3.5vw, 2.7rem);
+      font-weight: 800;
+      color: var(--navy);
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--blue); }
+
+    .section-sub {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .container { max-width: 1200px; margin: 0 auto; }
+
+    /* =============================================
+       BENEFITS
+    ============================================= */
+    #beneficios { background: var(--light); }
+
+    .benefits-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+    .benefits-header .section-sub { margin: 0 auto; }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 28px;
+    }
+
+    .benefit-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      border: 1px solid rgba(26,86,219,.08);
+      transition: transform .3s, box-shadow .3s, border-color .3s;
+      position: relative;
+      overflow: hidden;
+    }
+    .benefit-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue), var(--sky));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .4s ease;
+    }
+    .benefit-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+      border-color: rgba(26,86,219,.2);
+    }
+    .benefit-card:hover::before { transform: scaleX(1); }
+
+    .benefit-icon {
+      width: 60px; height: 60px;
+      border-radius: 14px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
+    }
+    .benefit-icon.yellow { background: #fffbeb; }
+    .benefit-icon.blue   { background: #eff6ff; }
+    .benefit-icon.green  { background: #f0fdf4; }
+    .benefit-icon.orange { background: #fff7ed; }
+
+    .benefit-card h3 {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 10px;
+    }
+    .benefit-card p {
+      font-size: .93rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    /* =============================================
+       HOW IT WORKS
+    ============================================= */
+    #como-funciona { background: var(--white); }
+
+    .steps-wrapper {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .steps-list { display: flex; flex-direction: column; gap: 0; }
+
+    .step {
+      display: flex;
+      gap: 24px;
+      padding: 28px 0;
+      position: relative;
+    }
+    .step:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      left: 24px;
+      top: 70px;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(to bottom, var(--blue), rgba(26,86,219,.1));
+    }
+
+    .step-num {
+      flex-shrink: 0;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue), var(--sky));
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 20px rgba(26,86,219,.35);
+      position: relative;
+      z-index: 1;
+    }
+
+    .step-body h3 {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 6px;
+    }
+    .step-body p {
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 1.65;
+    }
+
+    .steps-visual {
+      background: linear-gradient(135deg, #071428 0%, #0d2251 100%);
+      border-radius: 24px;
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      gap: 28px;
+      box-shadow: 0 24px 80px rgba(7,20,40,.3);
+    }
+
+    .steps-visual-title {
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 4px;
+    }
+    .steps-visual-sub {
+      font-size: .85rem;
+      color: rgba(255,255,255,.5);
+    }
+
+    .economy-display {
+      text-align: center;
+      padding: 32px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(56,189,248,.2);
+      border-radius: 16px;
+    }
+    .economy-before {
+      font-size: .85rem;
+      color: rgba(255,255,255,.5);
+      margin-bottom: 4px;
+    }
+    .economy-value {
+      font-family: 'Poppins', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--sky);
+      line-height: 1;
+    }
+    .economy-label {
+      font-size: .9rem;
+      color: rgba(255,255,255,.6);
+      margin-top: 6px;
+    }
+
+    .economy-bars { display: flex; flex-direction: column; gap: 14px; }
+    .bar-row { display: flex; flex-direction: column; gap: 6px; }
+    .bar-meta { display: flex; justify-content: space-between; font-size: .78rem; }
+    .bar-meta span:first-child { color: rgba(255,255,255,.6); }
+    .bar-meta span:last-child  { color: var(--white); font-weight: 700; }
+    .bar-track {
+      height: 8px;
+      background: rgba(255,255,255,.1);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: linear-gradient(90deg, var(--blue), var(--sky));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 1.2s ease;
+    }
+    .bar-fill.animated { transform: scaleX(1); }
+    .bar-fill.red-fill { background: linear-gradient(90deg, #ef4444, #f87171); }
+
+    /* =============================================
+       TESTIMONIALS
+    ============================================= */
+    #depoimentos { background: var(--light); }
+
+    .testimonials-header { text-align: center; margin-bottom: 64px; }
+    .testimonials-header .section-sub { margin: 0 auto; }
+
+    .stars { color: #f59e0b; font-size: 1rem; letter-spacing: 2px; margin-bottom: 6px; }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 24px;
+    }
+
+    .testimonial-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      border: 1px solid rgba(26,86,219,.08);
+      transition: transform .3s, box-shadow .3s;
+    }
+    .testimonial-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow);
+    }
+
+    .testimonial-card p {
+      font-size: .95rem;
+      color: #374151;
+      line-height: 1.7;
+      margin-bottom: 24px;
+      font-style: italic;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .author-avatar {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1rem;
+      color: var(--white);
+      flex-shrink: 0;
+    }
+    .av-blue   { background: linear-gradient(135deg, #1a56db, #38bdf8); }
+    .av-green  { background: linear-gradient(135deg, #059669, #10b981); }
+    .av-orange { background: linear-gradient(135deg, #d97706, #fbbf24); }
+    .av-purple { background: linear-gradient(135deg, #7c3aed, #a78bfa); }
+    .av-teal   { background: linear-gradient(135deg, #0891b2, #22d3ee); }
+    .av-rose   { background: linear-gradient(135deg, #e11d48, #fb7185); }
+
+    .author-info strong {
+      display: block;
+      font-size: .93rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+    .author-info span {
+      font-size: .8rem;
+      color: var(--muted);
+    }
+
+    .economy-tag {
+      margin-left: auto;
+      background: #f0fdf4;
+      color: #15803d;
+      font-size: .78rem;
+      font-weight: 700;
+      padding: 4px 12px;
+      border-radius: 50px;
+      border: 1px solid #bbf7d0;
+    }
+
+    /* =============================================
+       CTA FINAL
+    ============================================= */
+    #cta {
+      background: linear-gradient(135deg, var(--navy) 0%, #0d2251 100%);
+      text-align: center;
+      padding: 100px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+    #cta::before {
+      content: '';
+      position: absolute;
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(26,86,219,.2) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-inner { position: relative; z-index: 1; max-width: 700px; margin: 0 auto; }
+
+    .cta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(251,191,36,.12);
+      border: 1px solid rgba(251,191,36,.3);
+      color: #fbbf24;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: 8px 18px;
+      border-radius: 50px;
+      margin-bottom: 28px;
+    }
+
+    .cta-title {
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 800;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+    .cta-title span { color: var(--sky); }
+
+    .cta-sub {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,.65);
+      margin-bottom: 44px;
+      line-height: 1.7;
+    }
+
+    .btn-wpp-large {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: var(--wpp);
+      color: var(--white);
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.2rem;
+      padding: 22px 44px;
+      border-radius: 50px;
+      box-shadow: 0 12px 40px rgba(37,211,102,.35);
+      transition: background .25s, transform .2s, box-shadow .2s;
+    }
+    .btn-wpp-large:hover {
+      background: var(--wpp-h);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(37,211,102,.5);
+    }
+
+    .cta-trust {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 48px;
+    }
+    .trust-item {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: rgba(255,255,255,.55);
+      font-size: .88rem;
+    }
+    .trust-item span:first-child { font-size: 1.1rem; }
+
+    /* =============================================
+       FOOTER
+    ============================================= */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid rgba(255,255,255,.06);
+      padding: 48px 5%;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 32px;
+      align-items: center;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Poppins', sans-serif;
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+    .footer-logo span { color: var(--sky); }
+
+    .footer-contact {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .footer-contact a, .footer-contact span {
+      color: rgba(255,255,255,.5);
+      font-size: .88rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: color .2s;
+    }
+    .footer-contact a:hover { color: var(--sky); }
+
+    .footer-copy {
+      color: rgba(255,255,255,.28);
+      font-size: .78rem;
+      width: 100%;
+      text-align: center;
+      margin-top: 16px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,.06);
+    }
+
+    /* =============================================
+       FLOATING WPP BUTTON
+    ============================================= */
+    .floating-wpp {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 999;
+      width: 62px; height: 62px;
+      background: var(--wpp);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 6px 24px rgba(37,211,102,.5);
+      animation: pulse 2.5s ease-in-out infinite;
+      transition: transform .2s, box-shadow .2s;
+    }
+    .floating-wpp:hover {
+      transform: scale(1.12);
+      box-shadow: 0 12px 40px rgba(37,211,102,.6);
+      animation: none;
+    }
+    .floating-wpp svg { width: 32px; height: 32px; fill: var(--white); }
+
+    /* Tooltip */
+    .floating-wpp::before {
+      content: 'Falar no WhatsApp';
+      position: absolute;
+      right: 74px;
+      background: var(--navy);
+      color: var(--white);
+      font-size: .78rem;
+      font-weight: 600;
+      padding: 6px 14px;
+      border-radius: 8px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .2s;
+    }
+    .floating-wpp:hover::before { opacity: 1; }
+
+    /* =============================================
+       RESPONSIVE
+    ============================================= */
+    @media (max-width: 900px) {
+      .hero-visual { display: none; }
+      .steps-wrapper { grid-template-columns: 1fr; gap: 48px; }
+    }
+
+    @media (max-width: 640px) {
+      nav { padding: 14px 4%; }
+      .nav-cta span { display: none; }
+      section { padding: 72px 4%; }
+      .hero { padding: 100px 4% 72px; }
+      .hero-stats { gap: 20px; }
+      .benefit-card { padding: 28px 20px; }
+      .steps-visual { padding: 32px 24px; }
+      .economy-value { font-size: 2.8rem; }
+      .btn-wpp-large { font-size: 1rem; padding: 18px 28px; }
+      .cta-trust { gap: 16px; }
+      .footer-inner { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="logo">
+      <div class="logo-icon">☀️</div>
+      Gera<span>Mais</span>
+    </div>
+    <a href="https://wa.me/5516981534087" target="_blank" rel="noopener" class="nav-cta">
+      <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.555 4.1 1.521 5.83L.057 23.03a.75.75 0 00.914.914l5.2-1.464A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.661-.506-5.192-1.386l-.372-.215-3.868 1.089 1.089-3.868-.215-.372A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      <span>Orçamento grátis</span>
+    </a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="inicio">
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-badge">
+        ⚡ Energia que paga por si mesma
+      </div>
+      <h1 class="hero-title">
+        Economize até<br/>
+        <span class="percent">95%</span> na sua<br/>
+        <span class="highlight">conta de energia</span>
+      </h1>
+      <p class="hero-sub">
+        Instale painéis solares na sua residência ou empresa e pare de pagar alto pela energia elétrica. Sem entrada, instalação rápida e retorno garantido.
+      </p>
+      <div class="hero-actions">
+        <a href="https://wa.me/5516981534087" target="_blank" rel="noopener" class="btn-wpp">
+          <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.555 4.1 1.521 5.83L.057 23.03a.75.75 0 00.914.914l5.2-1.464A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.661-.506-5.192-1.386l-.372-.215-3.868 1.089 1.089-3.868-.215-.372A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          Fazer orçamento grátis
+        </a>
+        <a href="#como-funciona" class="btn-secondary">
+          Como funciona ↓
+        </a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <div class="stat-number" data-count="1200" data-suffix="+">0+</div>
+          <div class="stat-label">Clientes atendidos</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-count="95" data-suffix="%">0%</div>
+          <div class="stat-label">Economia máxima</div>
+        </div>
+        <div class="stat">
+          <div class="stat-number" data-count="5" data-suffix=" anos">0 anos</div>
+          <div class="stat-label">Retorno do investimento</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SVG Solar Illustration -->
+    <div class="hero-visual">
+      <svg class="solar-panel-svg" viewBox="0 0 500 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sun -->
+        <circle cx="380" cy="70" r="42" fill="#fbbf24" opacity=".9"/>
+        <circle cx="380" cy="70" r="55" fill="#fbbf24" opacity=".2"/>
+        <circle cx="380" cy="70" r="68" fill="#fbbf24" opacity=".08"/>
+        <!-- Sun rays -->
+        <g stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" opacity=".7">
+          <line x1="380" y1="4" x2="380" y2="18"/>
+          <line x1="380" y1="122" x2="380" y2="136"/>
+          <line x1="314" y1="70" x2="300" y2="70"/>
+          <line x1="446" y1="70" x2="460" y2="70"/>
+          <line x1="333" y1="23" x2="323" y2="13"/>
+          <line x1="427" y1="117" x2="437" y2="127"/>
+          <line x1="427" y1="23" x2="437" y2="13"/>
+          <line x1="333" y1="117" x2="323" y2="127"/>
+        </g>
+
+        <!-- House -->
+        <polygon points="140,220 260,140 380,220" fill="#1e3a5f"/>
+        <rect x="155" y="220" width="210" height="140" rx="4" fill="#1a3055"/>
+
+        <!-- Door -->
+        <rect x="235" y="300" width="50" height="60" rx="6" fill="#0f1f35"/>
+        <circle cx="278" cy="332" r="4" fill="#38bdf8" opacity=".7"/>
+
+        <!-- Windows -->
+        <rect x="170" y="245" width="50" height="40" rx="4" fill="#38bdf8" opacity=".25"/>
+        <rect x="170" y="245" width="50" height="40" rx="4" stroke="#38bdf8" stroke-width="1.5" opacity=".5"/>
+        <rect x="345" y="245" width="50" height="40" rx="4" fill="#38bdf8" opacity=".25"/>
+        <rect x="345" y="245" width="50" height="40" rx="4" stroke="#38bdf8" stroke-width="1.5" opacity=".5"/>
+
+        <!-- Solar panels on roof -->
+        <!-- Panel row 1 -->
+        <rect x="170" y="162" width="55" height="34" rx="3" fill="#1a56db" opacity=".9"/>
+        <rect x="232" y="152" width="55" height="34" rx="3" fill="#1a56db" opacity=".9"/>
+        <rect x="294" y="162" width="55" height="34" rx="3" fill="#1a56db" opacity=".9"/>
+        <!-- Panel grids -->
+        <g stroke="#38bdf8" stroke-width=".8" opacity=".5">
+          <line x1="187" y1="162" x2="187" y2="196"/>
+          <line x1="205" y1="162" x2="205" y2="196"/>
+          <line x1="222" y1="162" x2="222" y2="196"/>
+          <line x1="170" y1="173" x2="225" y2="173"/>
+          <line x1="170" y1="185" x2="225" y2="185"/>
+
+          <line x1="249" y1="152" x2="249" y2="186"/>
+          <line x1="267" y1="152" x2="267" y2="186"/>
+          <line x1="284" y1="152" x2="284" y2="186"/>
+          <line x1="232" y1="163" x2="287" y2="163"/>
+          <line x1="232" y1="175" x2="287" y2="175"/>
+
+          <line x1="311" y1="162" x2="311" y2="196"/>
+          <line x1="329" y1="162" x2="329" y2="196"/>
+          <line x1="347" y1="162" x2="347" y2="196"/>
+          <line x1="294" y1="173" x2="349" y2="173"/>
+          <line x1="294" y1="185" x2="349" y2="185"/>
+        </g>
+
+        <!-- Energy bolt -->
+        <polygon points="272,250 258,272 270,272 256,295 282,268 268,268" fill="#fbbf24" opacity=".9"/>
+
+        <!-- Ground -->
+        <ellipse cx="265" cy="365" rx="170" ry="12" fill="#0a1628" opacity=".4"/>
+
+        <!-- Floating energy particles -->
+        <circle cx="410" cy="180" r="4" fill="#38bdf8" opacity=".6"/>
+        <circle cx="430" cy="200" r="3" fill="#38bdf8" opacity=".4"/>
+        <circle cx="420" cy="220" r="5" fill="#38bdf8" opacity=".3"/>
+        <circle cx="100" cy="200" r="4" fill="#38bdf8" opacity=".5"/>
+        <circle cx="80" cy="220" r="3" fill="#38bdf8" opacity=".3"/>
+      </svg>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section id="beneficios">
+    <div class="container">
+      <div class="benefits-header reveal">
+        <div class="section-label">✦ Por que escolher energia solar</div>
+        <h2 class="section-title">Vantagens que <span>transformam</span> sua vida</h2>
+        <p class="section-sub">Muito além de economizar na conta de luz. A energia solar é um investimento inteligente com retornos garantidos.</p>
+      </div>
+      <div class="benefits-grid">
+        <div class="benefit-card reveal reveal-delay-1">
+          <div class="benefit-icon yellow">💰</div>
+          <h3>Redução de até 95% na conta</h3>
+          <p>Pare de jogar dinheiro fora todo mês. Com o sistema solar, sua fatura de energia cai drasticamente desde o primeiro mês de operação.</p>
+        </div>
+        <div class="benefit-card reveal reveal-delay-2">
+          <div class="benefit-icon blue">🏠</div>
+          <h3>Valoriza seu imóvel</h3>
+          <p>Imóveis com energia solar são mais valorizados no mercado. Estudos mostram valorização de até 8% no preço do imóvel após a instalação.</p>
+        </div>
+        <div class="benefit-card reveal reveal-delay-3">
+          <div class="benefit-icon green">🌱</div>
+          <h3>Energia 100% limpa</h3>
+          <p>Contribua com o meio ambiente gerando sua própria energia renovável. Zero emissões de CO₂ e sem impacto ambiental negativo.</p>
+        </div>
+        <div class="benefit-card reveal reveal-delay-4">
+          <div class="benefit-icon orange">📈</div>
+          <h3>Retorno rápido</h3>
+          <p>Em média entre 3 e 5 anos você recupera o investimento. Depois disso, é economia pura por mais de 20 anos de vida útil dos painéis.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section id="como-funciona">
+    <div class="container">
+      <div class="steps-wrapper">
+        <div>
+          <div class="reveal">
+            <div class="section-label">✦ Processo simplificado</div>
+            <h2 class="section-title">Como funciona<br/><span>em 3 passos</span></h2>
+            <p class="section-sub" style="margin-bottom:48px">Da análise até você gerando sua própria energia, o processo é rápido, simples e sem burocracia.</p>
+          </div>
+          <div class="steps-list">
+            <div class="step reveal reveal-delay-1">
+              <div class="step-num">1</div>
+              <div class="step-body">
+                <h3>Análise gratuita</h3>
+                <p>Nossa equipe analisa seu consumo, estrutura e localização para projetar o sistema ideal. Tudo sem compromisso e 100% gratuito.</p>
+              </div>
+            </div>
+            <div class="step reveal reveal-delay-2">
+              <div class="step-num">2</div>
+              <div class="step-body">
+                <h3>Instalação profissional</h3>
+                <p>Técnicos certificados instalam os painéis em até 2 dias. Lidamos com toda a parte burocrática junto à concessionária de energia.</p>
+              </div>
+            </div>
+            <div class="step reveal reveal-delay-3">
+              <div class="step-num">3</div>
+              <div class="step-body">
+                <h3>Economia imediata</h3>
+                <p>Assim que o sistema entra em operação, você já começa a economizar. Acompanhe tudo em tempo real pelo nosso aplicativo.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="steps-visual reveal">
+          <div>
+            <div class="steps-visual-title">☀️ Simulação de economia</div>
+            <div class="steps-visual-sub">Comparação: antes e depois da GeraMais</div>
+          </div>
+          <div class="economy-display">
+            <div class="economy-before">Você pode economizar até</div>
+            <div class="economy-value" id="ecoCount">0%</div>
+            <div class="economy-label">na sua conta de energia</div>
+          </div>
+          <div class="economy-bars">
+            <div class="bar-row">
+              <div class="bar-meta">
+                <span>Sem energia solar</span>
+                <span style="color:#f87171">R$ 850/mês</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill red-fill" data-width="1" id="barSem"></div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <div class="bar-meta">
+                <span>Com GeraMais</span>
+                <span>R$ 42/mês</span>
+              </div>
+              <div class="bar-track">
+                <div class="bar-fill" data-width=".05" id="barCom"></div>
+              </div>
+            </div>
+          </div>
+          <a href="https://wa.me/5516981534087" target="_blank" rel="noopener" class="btn-wpp" style="justify-content:center;font-size:.95rem;padding:14px 24px;">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.555 4.1 1.521 5.83L.057 23.03a.75.75 0 00.914.914l5.2-1.464A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.661-.506-5.192-1.386l-.372-.215-3.868 1.089 1.089-3.868-.215-.372A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+            Simular minha economia
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section id="depoimentos">
+    <div class="container">
+      <div class="testimonials-header reveal">
+        <div class="section-label">✦ Depoimentos reais</div>
+        <h2 class="section-title">Quem já <span>economiza</span> com a GeraMais</h2>
+        <p class="section-sub">Mais de 1.200 famílias e empresas já transformaram suas contas de energia.</p>
+      </div>
+      <div class="testimonials-grid">
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="stars">★★★★★</div>
+          <p>"Minha conta de luz era R$ 780 por mês. Hoje pago apenas R$ 38 de custo de disponibilidade. A GeraMais foi incrível do começo ao fim, super profissional."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar av-blue">RF</div>
+            <div class="author-info">
+              <strong>Ricardo Ferreira</strong>
+              <span>Ribeirão Preto, SP</span>
+            </div>
+            <span class="economy-tag">-95%</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">★★★★★</div>
+          <p>"Instalaram em dois dias e não tive nenhuma dor de cabeça. A equipe cuidou de tudo com a CPFL. Recomendo muito para qualquer pessoa que queira economizar."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar av-green">CM</div>
+            <div class="author-info">
+              <strong>Camila Monteiro</strong>
+              <span>Araraquara, SP</span>
+            </div>
+            <span class="economy-tag">-88%</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="stars">★★★★★</div>
+          <p>"Tenho um comércio e a conta chegava a R$ 2.400. Depois da instalação, caiu para R$ 180. Em menos de 4 anos vou ter pago o investimento inteiro. Ótimo negócio!"</p>
+          <div class="testimonial-author">
+            <div class="author-avatar av-orange">JS</div>
+            <div class="author-info">
+              <strong>José Souza</strong>
+              <span>São José do Rio Preto, SP</span>
+            </div>
+            <span class="economy-tag">-92%</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-1">
+          <div class="stars">★★★★★</div>
+          <p>"O atendimento foi excelente desde o primeiro contato. Fizeram a simulação, explicaram tudo claramente e a instalação foi impecável. Já indiquei para três amigas."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar av-purple">LA</div>
+            <div class="author-info">
+              <strong>Luciana Almeida</strong>
+              <span>Franca, SP</span>
+            </div>
+            <span class="economy-tag">-90%</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-2">
+          <div class="stars">★★★★★</div>
+          <p>"Fiquei com dúvidas no início, mas o consultor me explicou tudo com paciência. Hoje minha família economiza R$ 450 todo mês. Uma das melhores decisões que tomei."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar av-teal">MO</div>
+            <div class="author-info">
+              <strong>Marcos Oliveira</strong>
+              <span>Barretos, SP</span>
+            </div>
+            <span class="economy-tag">-87%</span>
+          </div>
+        </div>
+        <div class="testimonial-card reveal reveal-delay-3">
+          <div class="stars">★★★★★</div>
+          <p>"A GeraMais foi super transparente, sem enrolação. Tudo o que prometeram foi cumprido. O app de monitoramento é ótimo, acompanho a geração em tempo real."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar av-rose">AC</div>
+            <div class="author-info">
+              <strong>Ana Carolina</strong>
+              <span>Jaboticabal, SP</span>
+            </div>
+            <span class="economy-tag">-93%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA FINAL -->
+  <section id="cta">
+    <div class="cta-inner reveal">
+      <div class="cta-badge">🎯 Oferta limitada — orçamento 100% gratuito</div>
+      <h2 class="cta-title">Pronto para parar de<br/><span>desperdiçar dinheiro</span> todo mês?</h2>
+      <p class="cta-sub">Fale agora com um de nossos especialistas e receba uma simulação completa personalizada para o seu perfil de consumo. Sem compromisso.</p>
+      <a href="https://wa.me/5516981534087" target="_blank" rel="noopener" class="btn-wpp-large">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.555 4.1 1.521 5.83L.057 23.03a.75.75 0 00.914.914l5.2-1.464A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.661-.506-5.192-1.386l-.372-.215-3.868 1.089 1.089-3.868-.215-.372A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Quero meu orçamento agora
+      </a>
+      <div class="cta-trust">
+        <div class="trust-item"><span>✅</span><span>Orçamento gratuito</span></div>
+        <div class="trust-item"><span>🔒</span><span>Sem compromisso</span></div>
+        <div class="trust-item"><span>⚡</span><span>Atendimento imediato</span></div>
+        <div class="trust-item"><span>🏆</span><span>+1.200 clientes satisfeitos</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-logo">
+        <div class="logo-icon">☀️</div>
+        Gera<span>Mais</span>
+      </div>
+      <div class="footer-contact">
+        <a href="https://wa.me/5516981534087" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.555 4.1 1.521 5.83L.057 23.03a.75.75 0 00.914.914l5.2-1.464A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.661-.506-5.192-1.386l-.372-.215-3.868 1.089 1.089-3.868-.215-.372A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+          (16) 98153-4087
+        </a>
+        <span>📍 Brasil — atendemos todo o território nacional</span>
+        <span>🕐 Seg a Sex: 8h–18h | Sáb: 8h–12h</span>
+      </div>
+      <div class="footer-copy">
+        © 2025 GeraMais Energia Solar. Todos os direitos reservados. Energia limpa para um futuro melhor. 🌱
+      </div>
+    </div>
+  </footer>
+
+  <!-- FLOATING WPP -->
+  <a href="https://wa.me/5516981534087" target="_blank" rel="noopener" class="floating-wpp" aria-label="Falar no WhatsApp">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.117.555 4.1 1.521 5.83L.057 23.03a.75.75 0 00.914.914l5.2-1.464A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-1.89 0-3.661-.506-5.192-1.386l-.372-.215-3.868 1.089 1.089-3.868-.215-.372A10 10 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+  </a>
+
+  <script>
+    /* =============================================
+       SCROLL REVEAL
+    ============================================= */
+    const revealEls = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => observer.observe(el));
+
+    /* =============================================
+       COUNT-UP ANIMATION (hero stats)
+    ============================================= */
+    function animateCount(el, target, suffix, duration = 1600) {
+      let start = 0;
+      const step = target / (duration / 16);
+      const timer = setInterval(() => {
+        start = Math.min(start + step, target);
+        el.textContent = Math.floor(start) + suffix;
+        if (start >= target) clearInterval(timer);
+      }, 16);
+    }
+
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          document.querySelectorAll('[data-count]').forEach(el => {
+            const target = +el.dataset.count;
+            const suffix = el.dataset.suffix || '';
+            animateCount(el, target, suffix);
+          });
+          statsObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) statsObserver.observe(heroStats);
+
+    /* =============================================
+       ECONOMY % COUNT-UP + BARS (steps section)
+    ============================================= */
+    const ecoObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          // Count up %
+          const ecoEl = document.getElementById('ecoCount');
+          let v = 0;
+          const t = setInterval(() => {
+            v = Math.min(v + 1, 95);
+            ecoEl.textContent = v + '%';
+            if (v >= 95) clearInterval(t);
+          }, 18);
+
+          // Animate bars
+          setTimeout(() => {
+            const barSem = document.getElementById('barSem');
+            const barCom = document.getElementById('barCom');
+            if (barSem) barSem.classList.add('animated');
+            if (barCom) {
+              barCom.style.width = '5%';
+              barCom.style.transform = 'scaleX(1)';
+            }
+          }, 300);
+
+          ecoObserver.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    const stepsVisual = document.querySelector('.steps-visual');
+    if (stepsVisual) ecoObserver.observe(stepsVisual);
+
+    /* =============================================
+       SMOOTH SCROLL FOR ANCHOR LINKS
+    ============================================= */
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
+</body>
+</html>

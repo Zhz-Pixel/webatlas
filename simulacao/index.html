@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Web Atlas | Simulador de Orçamento</title>
+
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    :root {
+      --white: #ffffff;
+      --black: #050505;
+      --black-soft: #111111;
+      --blue: #0057ff;
+      --blue-dark: #003bb3;
+      --blue-light: #eaf1ff;
+      --gray: #f5f5f5;
+      --gray-2: #e5e7eb;
+      --text: #111827;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      min-height: 100vh;
+      background: var(--white);
+      color: var(--text);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      width: 100%;
+      padding: 24px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(255, 255, 255, 0.86);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 800;
+      font-size: 1.25rem;
+      letter-spacing: -0.5px;
+      color: var(--black);
+    }
+
+    .logo-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--black);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+    }
+
+    .logo span strong {
+      color: var(--blue);
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+    }
+
+    nav a {
+      color: var(--muted);
+      font-size: 0.94rem;
+      font-weight: 500;
+      transition: 0.25s ease;
+    }
+
+    nav a:hover {
+      color: var(--black);
+    }
+
+    .nav-button {
+      background: var(--black);
+      color: var(--white);
+      padding: 11px 18px;
+      border-radius: 999px;
+      font-weight: 700;
+    }
+
+    .nav-button:hover {
+      background: var(--blue);
+      color: var(--white);
+    }
+
+    .hero {
+      width: 100%;
+      padding: 80px 8% 60px;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 54px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--blue-light);
+      color: var(--blue);
+      border: 1px solid #d7e5ff;
+      padding: 9px 15px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.7rem, 5.2vw, 5.4rem);
+      line-height: 0.98;
+      letter-spacing: -3px;
+      color: var(--black);
+      margin-bottom: 26px;
+      max-width: 760px;
+    }
+
+    .hero h1 span {
+      color: var(--blue);
+    }
+
+    .hero-text {
+      color: var(--muted);
+      font-size: 1.05rem;
+      line-height: 1.75;
+      max-width: 630px;
+      margin-bottom: 34px;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      border: none;
+      outline: none;
+      cursor: pointer;
+      padding: 15px 23px;
+      border-radius: 14px;
+      font-weight: 800;
+      font-size: 0.95rem;
+      transition: 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--blue);
+      color: var(--white);
+      box-shadow: 0 16px 32px rgba(0, 87, 255, 0.18);
+    }
+
+    .btn-secondary {
+      background: var(--white);
+      color: var(--black);
+      border: 1px solid var(--border);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-3px);
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-dark);
+    }
+
+    .mini-stats {
+      margin-top: 42px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      max-width: 650px;
+    }
+
+    .mini-stat {
+      background: var(--gray);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 18px;
+    }
+
+    .mini-stat strong {
+      display: block;
+      font-size: 1.35rem;
+      color: var(--black);
+      margin-bottom: 4px;
+    }
+
+    .mini-stat span {
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    .simulator-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 28px 70px rgba(0, 0, 0, 0.08);
+      position: relative;
+    }
+
+    .simulator-card::before {
+      content: "";
+      position: absolute;
+      inset: 12px;
+      border-radius: 24px;
+      border: 1px solid rgba(0, 87, 255, 0.08);
+      pointer-events: none;
+    }
+
+    .simulator-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .simulator-card h2 {
+      color: var(--black);
+      font-size: 1.75rem;
+      letter-spacing: -1px;
+      margin-bottom: 8px;
+    }
+
+    .simulator-description {
+      color: var(--muted);
+      line-height: 1.6;
+      font-size: 0.94rem;
+      margin-bottom: 25px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      margin-bottom: 17px;
+    }
+
+    .form-group.full {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      color: var(--black);
+      font-weight: 700;
+      margin-bottom: 8px;
+      font-size: 0.92rem;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 15px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--border);
+      background: var(--white);
+      color: var(--black);
+      outline: none;
+      font-size: 0.96rem;
+      transition: 0.25s ease;
+    }
+
+    input::placeholder {
+      color: #9ca3af;
+    }
+
+    input:focus,
+    select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 4px rgba(0, 87, 255, 0.10);
+    }
+
+    .extras {
+      display: grid;
+      gap: 10px;
+      margin-top: 8px;
+    }
+
+    .extra-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 14px;
+      background: var(--gray);
+      border: 1px solid var(--border);
+      border-radius: 15px;
+      padding: 14px;
+      cursor: pointer;
+      transition: 0.25s ease;
+    }
+
+    .extra-item:hover {
+      background: var(--blue-light);
+      border-color: #c7dcff;
+    }
+
+    .extra-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .extra-left input {
+      width: 18px;
+      height: 18px;
+      accent-color: var(--blue);
+    }
+
+    .extra-price {
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 0.88rem;
+      white-space: nowrap;
+    }
+
+    .result-box {
+      margin-top: 24px;
+      background: var(--black);
+      color: var(--white);
+      border-radius: 24px;
+      padding: 22px;
+    }
+
+    .result-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      color: #d1d5db;
+      font-size: 0.94rem;
+    }
+
+    .result-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .result-row strong {
+      color: var(--white);
+      text-align: right;
+    }
+
+    .total {
+      margin-top: 18px;
+      background: var(--blue);
+      border-radius: 18px;
+      padding: 20px;
+    }
+
+    .total span {
+      font-size: 0.9rem;
+      color: #eaf1ff;
+    }
+
+    .total h3 {
+      margin-top: 4px;
+      font-size: 2rem;
+      letter-spacing: -1px;
+      color: var(--white);
+    }
+
+    .whatsapp-button {
+      width: 100%;
+      margin-top: 17px;
+      border: none;
+      cursor: pointer;
+      padding: 17px;
+      border-radius: 16px;
+      background: var(--white);
+      color: var(--black);
+      font-size: 1rem;
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .whatsapp-button:hover {
+      transform: translateY(-3px);
+      background: var(--blue-light);
+      color: var(--blue);
+    }
+
+    .note {
+      color: #9ca3af;
+      font-size: 0.78rem;
+      line-height: 1.55;
+      margin-top: 12px;
+      text-align: center;
+    }
+
+    .section-title {
+      padding: 40px 8% 12px;
+      text-align: center;
+    }
+
+    .section-title span {
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .section-title h2 {
+      color: var(--black);
+      margin-top: 10px;
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: -1.5px;
+    }
+
+    .features {
+      padding: 35px 8% 90px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .feature-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 26px;
+      padding: 28px;
+      transition: 0.25s ease;
+      box-shadow: 0 18px 45px rgba(0,0,0,0.04);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-7px);
+      border-color: #c7dcff;
+      box-shadow: 0 24px 60px rgba(0,87,255,0.09);
+    }
+
+    .feature-icon {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      background: var(--black);
+      color: var(--white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.28rem;
+      margin-bottom: 18px;
+    }
+
+    .feature-card h3 {
+      color: var(--black);
+      margin-bottom: 10px;
+      font-size: 1.17rem;
+    }
+
+    .feature-card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      line-height: 1.7;
+    }
+
+    footer {
+      padding: 36px 8%;
+      text-align: center;
+      background: var(--black);
+      color: #d1d5db;
+      font-size: 0.88rem;
+    }
+
+    @media (max-width: 1000px) {
+      header {
+        padding: 22px 5%;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding: 52px 5% 35px;
+        grid-template-columns: 1fr;
+      }
+
+      .features,
+      .section-title {
+        padding-left: 5%;
+        padding-right: 5%;
+      }
+    }
+
+    @media (max-width: 760px) {
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .mini-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero h1 {
+        letter-spacing: -2px;
+      }
+    }
+
+    @media (max-width: 520px) {
+      .hero {
+        padding-top: 34px;
+      }
+
+      .simulator-card {
+        padding: 22px;
+        border-radius: 24px;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+      }
+
+      .result-row {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .result-row strong {
+        text-align: left;
+      }
+
+      .total h3 {
+        font-size: 1.65rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="#" class="logo">
+      <div class="logo-mark">W</div>
+      <span>Web <strong>Atlas</strong></span>
+    </a>
+
+    <nav>
+      <a href="#simulador">Simulador</a>
+      <a href="#vantagens">Vantagens</a>
+      <a href="#contato">Contato</a>
+      <a href="#simulador" class="nav-button">Gerar orçamento</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div>
+        <div class="badge">
+          Simulador anual de sites
+        </div>
+
+        <h1>
+          Orçamento de site simples, rápido e <span>profissional</span>.
+        </h1>
+
+        <p class="hero-text">
+          Escolha o plano, informe a quantidade de páginas e adicione serviços como manutenção prioritária,
+          SEO, suporte e catálogo. No final, envie tudo direto para o WhatsApp da Web Atlas.
+        </p>
+
+        <div class="hero-actions">
+          <a href="#simulador" class="btn-primary">Simular agora</a>
+          <a href="#vantagens" class="btn-secondary">Ver benefícios</a>
+        </div>
+
+        <div class="mini-stats">
+          <div class="mini-stat">
+            <strong>3</strong>
+            <span>Planos disponíveis</span>
+          </div>
+
+          <div class="mini-stat">
+            <strong>12x</strong>
+            <span>Resumo anual</span>
+          </div>
+
+          <div class="mini-stat">
+            <strong>1 clique</strong>
+            <span>Envio no WhatsApp</span>
+          </div>
+        </div>
+      </div>
+
+      <section class="simulator-card" id="simulador">
+        <div class="simulator-content">
+          <h2>Simule seu orçamento</h2>
+
+          <p class="simulator-description">
+            Preencha os dados abaixo para gerar uma estimativa automática.
+          </p>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="nome">Seu nome</label>
+              <input type="text" id="nome" placeholder="Ex: Fábio" />
+            </div>
+
+            <div class="form-group">
+              <label for="empresa">Empresa</label>
+              <input type="text" id="empresa" placeholder="Ex: Minha Loja" />
+            </div>
+
+            <div class="form-group">
+              <label for="paginas">Quantidade de páginas</label>
+              <input type="number" id="paginas" min="1" value="5" />
+            </div>
+
+            <div class="form-group">
+              <label for="plano">Plano</label>
+              <select id="plano">
+                <option value="starter">Starter</option>
+                <option value="business" selected>Business</option>
+                <option value="premium">Premium</option>
+              </select>
+            </div>
+
+            <div class="form-group full">
+              <label>Serviços adicionais</label>
+
+              <div class="extras">
+                <label class="extra-item">
+                  <div class="extra-left">
+                    <input type="checkbox" class="extra" value="250" data-name="SEO inicial" />
+                    <span>SEO inicial</span>
+                  </div>
+                  <span class="extra-price">+ R$ 250</span>
+                </label>
+
+                <label class="extra-item">
+                  <div class="extra-left">
+                    <input type="checkbox" class="extra" value="180" data-name="WhatsApp flutuante" checked />
+                    <span>WhatsApp flutuante</span>
+                  </div>
+                  <span class="extra-price">+ R$ 180</span>
+                </label>
+
+                <label class="extra-item">
+                  <div class="extra-left">
+                    <input type="checkbox" class="extra" value="350" data-name="Formulário inteligente" />
+                    <span>Formulário inteligente</span>
+                  </div>
+                  <span class="extra-price">+ R$ 350</span>
+                </label>
+
+                <label class="extra-item">
+                  <div class="extra-left">
+                    <input type="checkbox" class="extra" value="500" data-name="Catálogo de produtos" />
+                    <span>Catálogo de produtos</span>
+                  </div>
+                  <span class="extra-price">+ R$ 500</span>
+                </label>
+
+                <label class="extra-item">
+                  <div class="extra-left">
+                    <input type="checkbox" class="extra" value="1200" data-name="Manutenção prioritária anual" />
+                    <span>Manutenção prioritária anual</span>
+                  </div>
+                  <span class="extra-price">+ R$ 1.200</span>
+                </label>
+
+                <label class="extra-item">
+                  <div class="extra-left">
+                    <input type="checkbox" class="extra" value="840" data-name="Suporte mensal estendido" />
+                    <span>Suporte mensal estendido</span>
+                  </div>
+                  <span class="extra-price">+ R$ 840</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="result-box">
+            <div class="result-row">
+              <span>Plano escolhido</span>
+              <strong id="resPlano">Business</strong>
+            </div>
+
+            <div class="result-row">
+              <span>Valor base</span>
+              <strong id="resBase">R$ 1.200,00</strong>
+            </div>
+
+            <div class="result-row">
+              <span>Páginas adicionais</span>
+              <strong id="resPaginas">R$ 320,00</strong>
+            </div>
+
+            <div class="result-row">
+              <span>Serviços adicionais</span>
+              <strong id="resExtras">R$ 180,00</strong>
+            </div>
+
+            <div class="result-row">
+              <span>Manutenção mensal padrão</span>
+              <strong id="resMensal">R$ 149,00/mês</strong>
+            </div>
+
+            <div class="total">
+              <span>Total estimado anual</span>
+              <h3 id="resTotal">R$ 3.488,00</h3>
+            </div>
+
+            <button class="whatsapp-button" onclick="enviarWhatsApp()">
+              Enviar orçamento no WhatsApp
+            </button>
+
+            <p class="note">
+              Este valor é uma estimativa automática. O orçamento final pode mudar conforme integrações, páginas e funcionalidades.
+            </p>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section class="section-title" id="vantagens">
+      <span>Web Atlas</span>
+      <h2>Um orçamento limpo para um site que vende</h2>
+    </section>
+
+    <section class="features">
+      <div class="feature-card">
+        <div class="feature-icon">01</div>
+        <h3>Visual minimalista</h3>
+        <p>
+          Preto, branco e azul. Sem poluição visual, sem firula inútil e sem aquele layout que parece painel de micro-ondas.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">02</div>
+        <h3>Orçamento automático</h3>
+        <p>
+          O cliente escolhe páginas, plano e extras. O sistema calcula tudo na hora com total anual.
+        </p>
+      </div>
+
+      <div class="feature-card">
+        <div class="feature-icon">03</div>
+        <h3>WhatsApp pronto</h3>
+        <p>
+          A mensagem já vai organizada com nome, empresa, plano, serviços e valor estimado.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer id="contato">
+    © 2026 Web Atlas. Sites minimalistas, rápidos e prontos para vender.
+  </footer>
+
+  <script>
+    const numeroWhatsApp = "5575998053960";
+
+    const planos = {
+      starter: {
+        nome: "Starter",
+        base: 800,
+        paginaExtra: 120,
+        manutencao: 99
+      },
+      business: {
+        nome: "Business",
+        base: 1200,
+        paginaExtra: 160,
+        manutencao: 149
+      },
+      premium: {
+        nome: "Premium",
+        base: 2200,
+        paginaExtra: 220,
+        manutencao: 249
+      }
+    };
+
+    const nomeInput = document.getElementById("nome");
+    const empresaInput = document.getElementById("empresa");
+    const paginasInput = document.getElementById("paginas");
+    const planoSelect = document.getElementById("plano");
+    const extrasInputs = document.querySelectorAll(".extra");
+
+    const resPlano = document.getElementById("resPlano");
+    const resBase = document.getElementById("resBase");
+    const resPaginas = document.getElementById("resPaginas");
+    const resExtras = document.getElementById("resExtras");
+    const resMensal = document.getElementById("resMensal");
+    const resTotal = document.getElementById("resTotal");
+
+    function formatarMoeda(valor) {
+      return valor.toLocaleString("pt-BR", {
+        style: "currency",
+        currency: "BRL"
+      });
+    }
+
+    function calcularOrcamento() {
+      const planoAtual = planos[planoSelect.value];
+
+      let paginas = Number(paginasInput.value);
+
+      if (!paginas || paginas < 1) {
+        paginas = 1;
+        paginasInput.value = 1;
+      }
+
+      const paginasInclusas = 3;
+      const paginasExtras = Math.max(0, paginas - paginasInclusas);
+
+      const valorBase = planoAtual.base;
+      const valorPaginas = paginasExtras * planoAtual.paginaExtra;
+
+      let valorExtras = 0;
+
+      extrasInputs.forEach(extra => {
+        if (extra.checked) {
+          valorExtras += Number(extra.value);
+        }
+      });
+
+      const manutencaoMensal = planoAtual.manutencao;
+      const manutencaoAnual = manutencaoMensal * 12;
+
+      const totalAnual = valorBase + valorPaginas + valorExtras + manutencaoAnual;
+
+      resPlano.textContent = planoAtual.nome;
+      resBase.textContent = formatarMoeda(valorBase);
+      resPaginas.textContent = formatarMoeda(valorPaginas);
+      resExtras.textContent = formatarMoeda(valorExtras);
+      resMensal.textContent = `${formatarMoeda(manutencaoMensal)}/mês`;
+      resTotal.textContent = formatarMoeda(totalAnual);
+
+      return {
+        plano: planoAtual.nome,
+        paginas,
+        paginasExtras,
+        valorBase,
+        valorPaginas,
+        valorExtras,
+        manutencaoMensal,
+        manutencaoAnual,
+        totalAnual
+      };
+    }
+
+    function pegarExtrasSelecionados() {
+      const extrasSelecionados = [];
+
+      extrasInputs.forEach(extra => {
+        if (extra.checked) {
+          extrasSelecionados.push(extra.dataset.name);
+        }
+      });
+
+      if (extrasSelecionados.length === 0) {
+        return "Nenhum serviço adicional selecionado";
+      }
+
+      return extrasSelecionados.join(", ");
+    }
+
+    function enviarWhatsApp() {
+      const dados = calcularOrcamento();
+
+      const nome = nomeInput.value.trim() || "Não informado";
+      const empresa = empresaInput.value.trim() || "Não informada";
+      const extras = pegarExtrasSelecionados();
+
+      const mensagem = `
+Olá, Web Atlas! Quero solicitar um orçamento.
+
+Nome: ${nome}
+Empresa: ${empresa}
+
+Plano escolhido: ${dados.plano}
+Quantidade de páginas: ${dados.paginas}
+Páginas adicionais: ${dados.paginasExtras}
+
+Valor base: ${formatarMoeda(dados.valorBase)}
+Valor das páginas adicionais: ${formatarMoeda(dados.valorPaginas)}
+
+Serviços adicionais:
+${extras}
+
+Valor dos serviços adicionais: ${formatarMoeda(dados.valorExtras)}
+
+Manutenção mensal padrão: ${formatarMoeda(dados.manutencaoMensal)}
+Manutenção anual padrão: ${formatarMoeda(dados.manutencaoAnual)}
+
+Total estimado anual: ${formatarMoeda(dados.totalAnual)}
+
+Gostaria de continuar com esse orçamento.
+      `;
+
+      const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensagem)}`;
+      window.open(url, "_blank");
+    }
+
+    paginasInput.addEventListener("input", calcularOrcamento);
+    planoSelect.addEventListener("change", calcularOrcamento);
+
+    extrasInputs.forEach(extra => {
+      extra.addEventListener("change", calcularOrcamento);
+    });
+
+    calcularOrcamento();
+  </script>
+
+</body>
+</html>
