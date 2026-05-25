@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="WebAtlas cria sites rápidos, modernos e estratégicos para transformar visitantes em clientes no WhatsApp." />
   <meta name="theme-color" content="#4f6ef7" />
-  <title>WebAtlas</title>
+  <title>WebAtlas | Sites que geram clientes</title>
   <link rel="icon" href="abc.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -101,11 +101,11 @@
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 36px;
+      gap: 24px;
       list-style: none;
     }
     .nav-links a {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 500;
       color: var(--gray-600);
       text-decoration: none;
@@ -433,6 +433,422 @@
       line-height: 1.6;
     }
 
+
+
+    /* ===== COMO FUNCIONA ===== */
+    #como-funciona {
+      background: var(--off-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #como-funciona::before,
+    #simulador::before {
+      content: '';
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,110,247,0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    #como-funciona::before {
+      top: -140px;
+      right: -120px;
+    }
+
+    .center-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px;
+    }
+    .center-header .section-sub { margin: 0 auto; }
+
+    .funciona-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1120px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .passo-card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(79,110,247,0.12);
+      border-radius: 20px;
+      padding: 28px 22px;
+      box-shadow: 0 14px 42px rgba(10,10,20,0.05);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .passo-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(79,110,247,0.28);
+    }
+
+    .passo-number {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.86rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 30px rgba(79,110,247,0.28);
+    }
+
+    .passo-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .passo-desc {
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: var(--gray-600);
+    }
+
+    /* ===== PRÉVIAS QUE VENDEM ===== */
+    #previas { background: var(--white); }
+
+    .previas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .preview-card {
+      background: linear-gradient(180deg, var(--white), var(--off-white));
+      border: 1px solid var(--gray-200);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 14px 42px rgba(10,10,20,0.05);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .preview-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(79,110,247,0.25);
+    }
+
+    .preview-frame {
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--black);
+      border: 1px solid rgba(10,10,20,0.08);
+      min-height: 190px;
+      position: relative;
+    }
+
+    .preview-topbar {
+      height: 28px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 12px;
+    }
+    .preview-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+    }
+
+    .preview-hero {
+      min-height: 162px;
+      padding: 22px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 85% 18%, rgba(123,147,255,0.45), transparent 42%),
+        linear-gradient(135deg, #0a0a0f, #18204a);
+    }
+
+    .preview-tag {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .preview-title {
+      font-size: 1.18rem;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      max-width: 230px;
+      margin-bottom: 10px;
+    }
+
+    .preview-lines span {
+      display: block;
+      height: 7px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.24);
+      margin-bottom: 7px;
+    }
+    .preview-lines span:nth-child(1) { width: 72%; }
+    .preview-lines span:nth-child(2) { width: 52%; }
+
+    .preview-body {
+      padding: 18px 4px 4px;
+    }
+    .preview-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .preview-desc {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--gray-600);
+      margin-bottom: 16px;
+    }
+    .preview-mini-cta {
+      display: inline-flex;
+      align-items: center;
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* ===== SIMULADOR ===== */
+    #simulador {
+      background: var(--off-white);
+      position: relative;
+      overflow: hidden;
+    }
+    #simulador::before {
+      bottom: -160px;
+      left: -120px;
+    }
+
+    .simulador-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 28px;
+      align-items: stretch;
+      max-width: 1120px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .simulator-panel,
+    .simulator-preview {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(79,110,247,0.14);
+      border-radius: 24px;
+      box-shadow: 0 18px 58px rgba(10,10,20,0.06);
+    }
+
+    .simulator-panel { padding: 32px; }
+
+    .simulator-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 50px;
+      background: rgba(79,110,247,0.08);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .simulator-panel .section-title { margin-bottom: 14px; }
+    .simulator-panel .section-sub { max-width: 100%; margin-bottom: 26px; }
+
+    .simulator-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .simulator-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .sim-option {
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--gray-600);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .sim-option:hover {
+      transform: translateY(-2px);
+      border-color: rgba(79,110,247,0.32);
+      color: var(--blue);
+    }
+    .sim-option.active {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--blue);
+      box-shadow: 0 12px 32px rgba(79,110,247,0.22);
+    }
+
+    .sim-result {
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(79,110,247,0.08), rgba(79,110,247,0.03));
+      border: 1px solid rgba(79,110,247,0.12);
+      padding: 18px;
+      margin-bottom: 22px;
+    }
+    .sim-result strong {
+      display: block;
+      color: var(--black);
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    .sim-result span {
+      display: block;
+      color: var(--gray-600);
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .simulator-preview {
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 460px;
+    }
+
+    .fake-browser {
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--black);
+      box-shadow: 0 24px 70px rgba(10,10,20,0.18);
+    }
+
+    .fake-browser-bar {
+      height: 36px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 14px;
+    }
+    .fake-browser-bar span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.38);
+    }
+
+    .fake-site {
+      min-height: 382px;
+      padding: 34px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 82% 20%, rgba(123,147,255,0.48), transparent 34%),
+        radial-gradient(circle at 20% 84%, rgba(79,110,247,0.28), transparent 30%),
+        linear-gradient(135deg, #090a12, #151a38);
+    }
+
+    .fake-site-badge {
+      display: inline-flex;
+      padding: 6px 12px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.78);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .fake-site h3 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      max-width: 420px;
+      margin-bottom: 14px;
+    }
+
+    .fake-site p {
+      color: rgba(255,255,255,0.66);
+      max-width: 380px;
+      line-height: 1.7;
+      font-size: 0.92rem;
+      margin-bottom: 22px;
+    }
+
+    .fake-site-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 50px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .fake-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .fake-stat {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .fake-stat strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+    .fake-stat span {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.72rem;
+      line-height: 1.4;
+    }
+
     /* ===== PLANOS ===== */
     #planos { background: var(--off-white); }
 
@@ -744,6 +1160,10 @@
 
       .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
       .sobre-visual { order: -1; }
+      .funciona-grid,
+      .previas-grid,
+      .simulador-grid { grid-template-columns: 1fr; }
+      .simulator-preview { min-height: auto; }
 
       .planos-grid { grid-template-columns: 1fr; max-width: 400px; }
       .plano-card.featured { transform: scale(1); }
@@ -761,7 +1181,12 @@
         width: 100%;
         justify-content: center;
       }
-      .beneficios-grid { grid-template-columns: 1fr; }
+      .beneficios-grid,
+      .simulator-options,
+      .fake-stats { grid-template-columns: 1fr; }
+      .simulator-panel,
+      .simulator-preview { padding: 24px; }
+      .fake-site { padding: 26px; }
       .sobre-visual { grid-template-columns: 1fr; }
       .stat-card:nth-child(2),
       .stat-card:nth-child(4) { margin-top: 0; }
@@ -816,8 +1241,10 @@
     <ul class="nav-links">
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#beneficios">Benefícios</a></li>
+      <li><a href="#como-funciona">Como funciona</a></li>
+      <li><a href="#previas">Prévias</a></li>
+      <li><a href="#simulador">Simulador</a></li>
       <li><a href="#planos">Planos</a></li>
-      <li><a href="#contato">Contato</a></li>
       <li><a href="https://suporte.webatlas.com.br/">Suporte</a></li>
       <li><a href="#planos" class="nav-cta">Ver Planos</a></li>
     </ul>
@@ -830,8 +1257,10 @@
 <div class="mobile-nav" id="mobileNav">
   <a href="#sobre" onclick="closeMobileNav()">Sobre</a>
   <a href="#beneficios" onclick="closeMobileNav()">Benefícios</a>
+  <a href="#como-funciona" onclick="closeMobileNav()">Como funciona</a>
+  <a href="#previas" onclick="closeMobileNav()">Prévias que vendem</a>
+  <a href="#simulador" onclick="closeMobileNav()">Simulador</a>
   <a href="#planos" onclick="closeMobileNav()">Planos</a>
-  <a href="#contato" onclick="closeMobileNav()">Contato</a>
   <a href="https://suporte.webatlas.com.br/" onclick="closeMobileNav()">Suporte</a>
   <a href="#planos" onclick="closeMobileNav()">Ver Planos →</a>
 </div>
@@ -941,6 +1370,149 @@
 
   </div>
 </section>
+
+<!-- ===== COMO FUNCIONA ===== -->
+<section id="como-funciona">
+  <div class="center-header reveal">
+    <p class="section-label">Como funciona</p>
+    <h2 class="section-title">Do primeiro contato ao site no ar<br>sem confusão</h2>
+    <p class="section-sub">Um processo simples, rápido e feito para o cliente entender o valor antes de comprar.</p>
+  </div>
+
+  <div class="funciona-grid">
+    <div class="passo-card reveal">
+      <div class="passo-number">01</div>
+      <h3 class="passo-title">Entendemos seu negócio</h3>
+      <p class="passo-desc">Você conta o serviço, cidade, público e objetivo. A gente transforma isso em uma página com direção de venda.</p>
+    </div>
+
+    <div class="passo-card reveal reveal-delay-1">
+      <div class="passo-number">02</div>
+      <h3 class="passo-title">Criamos uma prévia</h3>
+      <p class="passo-desc">Você vê uma ideia visual antes de fechar. Sem enrolação, sem reunião gigante, sem arquivo perdido no limbo.</p>
+    </div>
+
+    <div class="passo-card reveal reveal-delay-2">
+      <div class="passo-number">03</div>
+      <h3 class="passo-title">Ajustamos os detalhes</h3>
+      <p class="passo-desc">Cores, textos, fotos, botões e informações entram no lugar certo para deixar tudo com cara profissional.</p>
+    </div>
+
+    <div class="passo-card reveal reveal-delay-3">
+      <div class="passo-number">04</div>
+      <h3 class="passo-title">Publicamos e conectamos</h3>
+      <p class="passo-desc">O site fica no ar com domínio, botão de WhatsApp, visual responsivo e pronto para receber clientes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PRÉVIAS QUE VENDEM ===== -->
+<section id="previas">
+  <div class="center-header reveal">
+    <p class="section-label">Prévias que vendem</p>
+    <h2 class="section-title">Mostre o futuro do negócio<br>antes do cliente pagar</h2>
+    <p class="section-sub">A prévia deixa a proposta visual, clara e mais fácil de aprovar. O cliente não imagina: ele vê.</p>
+  </div>
+
+  <div class="previas-grid">
+    <div class="preview-card reveal">
+      <div class="preview-frame">
+        <div class="preview-topbar"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span></div>
+        <div class="preview-hero">
+          <span class="preview-tag">Serviços locais</span>
+          <h3 class="preview-title">Mais chamadas no WhatsApp todos os dias</h3>
+          <div class="preview-lines"><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="preview-body">
+        <h3 class="preview-name">Para negócios de bairro</h3>
+        <p class="preview-desc">Ideal para chaveiros, encanadores, clínicas, assistência técnica, salões e serviços rápidos.</p>
+        <a href="#contato" class="preview-mini-cta">Quero uma prévia →</a>
+      </div>
+    </div>
+
+    <div class="preview-card reveal reveal-delay-1">
+      <div class="preview-frame">
+        <div class="preview-topbar"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span></div>
+        <div class="preview-hero">
+          <span class="preview-tag">Venda visual</span>
+          <h3 class="preview-title">Produtos com destaque e botão de pedido</h3>
+          <div class="preview-lines"><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="preview-body">
+        <h3 class="preview-name">Para lojas e cardápios</h3>
+        <p class="preview-desc">Perfeito para açaí, restaurantes, pizzarias, moda, móveis e páginas de produto.</p>
+        <a href="#contato" class="preview-mini-cta">Ver possibilidade →</a>
+      </div>
+    </div>
+
+    <div class="preview-card reveal reveal-delay-2">
+      <div class="preview-frame">
+        <div class="preview-topbar"><span class="preview-dot"></span><span class="preview-dot"></span><span class="preview-dot"></span></div>
+        <div class="preview-hero">
+          <span class="preview-tag">Autoridade local</span>
+          <h3 class="preview-title">Seu negócio parecendo maior e mais confiável</h3>
+          <div class="preview-lines"><span></span><span></span></div>
+        </div>
+      </div>
+      <div class="preview-body">
+        <h3 class="preview-name">Para marcas que querem crescer</h3>
+        <p class="preview-desc">Ajuda empresas a passarem confiança, mostrarem serviços e receberem contatos qualificados.</p>
+        <a href="#planos" class="preview-mini-cta">Escolher plano →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SIMULADOR DE SITE ===== -->
+<section id="simulador">
+  <div class="simulador-grid">
+    <div class="simulator-panel reveal">
+      <span class="simulator-kicker">Simulador de site</span>
+      <h2 class="section-title">Veja o tipo de site que combina com seu negócio</h2>
+      <p class="section-sub">Escolha um nicho e veja uma ideia de promessa, visual e chamada para WhatsApp. É simples, mas já vende a visão.</p>
+
+      <span class="simulator-label">Escolha o nicho</span>
+      <div class="simulator-options" aria-label="Escolha o tipo de negócio">
+        <button type="button" class="sim-option active" data-sim="servicos">Serviços locais</button>
+        <button type="button" class="sim-option" data-sim="restaurante">Restaurante / Açaí</button>
+        <button type="button" class="sim-option" data-sim="autos">Veículos</button>
+        <button type="button" class="sim-option" data-sim="clinica">Clínica / Saúde</button>
+      </div>
+
+      <div class="sim-result">
+        <strong id="simResultTitle">Modelo recomendado: Landing page direta</strong>
+        <span id="simResultText">Uma página objetiva com serviço, benefícios, provas de confiança e botão forte para WhatsApp.</span>
+      </div>
+
+      <button class="btn-primary" type="button" onclick="simuladorWhatsApp()">
+        Pedir minha simulação
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+          <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="simulator-preview reveal reveal-delay-1">
+      <div class="fake-browser" aria-label="Prévia visual do site simulado">
+        <div class="fake-browser-bar"><span></span><span></span><span></span></div>
+        <div class="fake-site">
+          <span class="fake-site-badge" id="fakeBadge">Serviços locais</span>
+          <h3 id="fakeTitle">Seu serviço encontrado rápido, com cliente chamando no WhatsApp</h3>
+          <p id="fakeText">Página feita para explicar o que você faz, passar confiança e levar o visitante direto para o atendimento.</p>
+          <div class="fake-site-cta" id="fakeCta">Chamar no WhatsApp</div>
+          <div class="fake-stats">
+            <div class="fake-stat"><strong>24h</strong><span>Contato fácil</span></div>
+            <div class="fake-stat"><strong>SEO</strong><span>Base para Google</span></div>
+            <div class="fake-stat"><strong>100%</strong><span>Responsivo</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 
 <!-- ===== PLANOS ===== -->
 <section id="planos">
@@ -1072,7 +1644,7 @@
   <!-- ===== RODAPÉ ===== -->
   <footer>
     <div class="footer-logo">Web<span class="dot">Atlas</span></div>
-    <p class="footer-text">© 2026 WebAtlas. Todos os direitos reservados ¨¨ Desenvolvido por Fábio</p>
+    <p class="footer-text">© 2026 WebAtlas. Todos os direitos reservados - Desenvolvido por Fábio</p>
   </footer>
 
   <!-- ===== JAVASCRIPT ===== -->
@@ -1152,6 +1724,73 @@
       document.getElementById('price-premium').textContent = formatarPreco(precos.premium * desconto);
       document.getElementById('price-profissional').textContent = formatarPreco(precos.profissional * desconto);
     }
+
+
+
+    /* ===== SIMULADOR DE SITE ===== */
+    const simulatorData = {
+      servicos: {
+        badge: 'Serviços locais',
+        title: 'Seu serviço encontrado rápido, com cliente chamando no WhatsApp',
+        text: 'Página feita para explicar o que você faz, passar confiança e levar o visitante direto para o atendimento.',
+        resultTitle: 'Modelo recomendado: Landing page direta',
+        resultText: 'Uma página objetiva com serviço, benefícios, provas de confiança e botão forte para WhatsApp.',
+        message: 'Olá, quero simular um site para serviços locais com foco em WhatsApp.'
+      },
+      restaurante: {
+        badge: 'Cardápio e pedidos',
+        title: 'Seu cardápio bonito, rápido e pronto para vender mais',
+        text: 'Mostre combos, fotos, preços, diferenciais e leve o cliente direto para o pedido no WhatsApp.',
+        resultTitle: 'Modelo recomendado: Página de produtos e combos',
+        resultText: 'Ideal para destacar sabores, promoções e pedidos rápidos pelo celular.',
+        message: 'Olá, quero simular um site para restaurante, açaí ou cardápio online.'
+      },
+      autos: {
+        badge: 'Veículos',
+        title: 'Carros em destaque com aparência profissional e contato rápido',
+        text: 'Organize ofertas, diferenciais, financiamento, localização e chamada direta para atendimento.',
+        resultTitle: 'Modelo recomendado: Vitrine de veículos',
+        resultText: 'Perfeito para concessionárias, lojas de carros e vendedores que querem mais leads.',
+        message: 'Olá, quero simular um site para veículos ou loja de carros.'
+      },
+      clinica: {
+        badge: 'Clínica e saúde',
+        title: 'Mais confiança para pacientes agendarem pelo WhatsApp',
+        text: 'Apresente especialidades, equipe, localização, horários e botão de agendamento com visual limpo.',
+        resultTitle: 'Modelo recomendado: Site institucional de conversão',
+        resultText: 'Feito para transmitir autoridade, clareza e facilitar o agendamento.',
+        message: 'Olá, quero simular um site para clínica, saúde ou atendimento profissional.'
+      }
+    };
+
+    let selectedSimulation = 'servicos';
+
+    function atualizarSimulador(tipo) {
+      const data = simulatorData[tipo];
+      if (!data) return;
+
+      selectedSimulation = tipo;
+      document.querySelectorAll('.sim-option').forEach(button => {
+        button.classList.toggle('active', button.dataset.sim === tipo);
+      });
+
+      document.getElementById('fakeBadge').textContent = data.badge;
+      document.getElementById('fakeTitle').textContent = data.title;
+      document.getElementById('fakeText').textContent = data.text;
+      document.getElementById('simResultTitle').textContent = data.resultTitle;
+      document.getElementById('simResultText').textContent = data.resultText;
+    }
+
+    document.querySelectorAll('.sim-option').forEach(button => {
+      button.addEventListener('click', () => atualizarSimulador(button.dataset.sim));
+    });
+
+    function simuladorWhatsApp() {
+      const data = simulatorData[selectedSimulation] || simulatorData.servicos;
+      const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(data.message)}`;
+      window.open(url, '_blank', 'noopener,noreferrer');
+    }
+
 
     /* ===== FUNÇÃO WHATSAPP ===== */
     const WHATSAPP_NUMBER = '5575998053960';
