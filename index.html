@@ -1,15 +1,39 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <link rel="icon" href="abc.png" type="image/png">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>WebAtlas</title>
+  <meta name="description" content="WebAtlas cria sites profissionais, rápidos e responsivos para empresas que querem receber mais clientes pelo WhatsApp. Peça uma prévia gratuita para seu negócio." />
+  <meta name="keywords" content="criação de sites, sites para WhatsApp, landing page, WebAtlas, site profissional, site para empresas, site responsivo" />
+  <meta name="author" content="WebAtlas" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#4f6ef7" />
+  <link rel="canonical" href="https://webatlas.com.br/" />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="pt_BR" />
+  <meta property="og:title" content="WebAtlas | Sites profissionais que geram clientes no WhatsApp" />
+  <meta property="og:description" content="Tenha um site rápido, bonito e estratégico para transformar visitantes em mensagens no WhatsApp. Peça sua prévia gratuita." />
+  <meta property="og:url" content="https://webatlas.com.br/" />
+  <meta property="og:site_name" content="WebAtlas" />
+  <meta property="og:image" content="https://webatlas.com.br/og-webatlas.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="WebAtlas | Sites que geram clientes" />
+  <meta name="twitter:description" content="Sites profissionais focados em WhatsApp, Google e conversão para negócios locais." />
+  <meta name="twitter:image" content="https://webatlas.com.br/og-webatlas.png" />
+
+  <title>WebAtlas | Sites profissionais que geram clientes no WhatsApp</title>
+  <link rel="icon" href="abc.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
   <style>
     /* ===== RESET & BASE ===== */
-    *, *::before, *::after { margin: 50; padding: 0; box-sizing: border-box; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     html { scroll-behavior: smooth; font-size: 16px; }
+    img, svg { display: block; max-width: 100%; }
+    a, button { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
 
     /* ===== CSS VARIABLES ===== */
     :root {
@@ -32,14 +56,29 @@
       --radius-sm: 10px;
       --shadow: 0 4px 32px rgba(10, 10, 20, 0.08);
       --shadow-md: 0 8px 48px rgba(10, 10, 20, 0.13);
+      --shadow-blue: 0 18px 60px rgba(79, 110, 247, 0.22);
     }
 
     body {
       font-family: var(--font);
-      background: var(--white);
+      background:
+        radial-gradient(circle at top left, rgba(79,110,247,0.08), transparent 34rem),
+        var(--white);
       color: var(--black);
       -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
       overflow-x: hidden;
+    }
+
+    ::selection {
+      background: rgba(79,110,247,0.22);
+      color: var(--black);
+    }
+
+    :focus-visible {
+      outline: 3px solid rgba(79,110,247,0.38);
+      outline-offset: 4px;
+      border-radius: 10px;
     }
 
     /* ===== NAVBAR ===== */
@@ -51,8 +90,8 @@
       align-items: center;
       justify-content: space-between;
       padding: 0 6vw;
-      height: 68px;
-      background: rgba(255,255,255,0.88);
+      height: 72px;
+      background: rgba(255,255,255,0.86);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
       border-bottom: 1px solid rgba(79, 110, 247, 0.08);
@@ -72,14 +111,18 @@
     }
     .nav-logo .dot { color: var(--blue); }
 
+    .nav-logo:hover .dot {
+      text-shadow: 0 0 18px rgba(79,110,247,0.42);
+    }
+
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 36px;
+      gap: 24px;
       list-style: none;
     }
     .nav-links a {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       font-weight: 500;
       color: var(--gray-600);
       text-decoration: none;
@@ -116,6 +159,9 @@
       border-radius: 2px;
       transition: var(--transition);
     }
+    .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+    .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
     /* ===== HERO ===== */
     #hero {
@@ -155,7 +201,21 @@
       pointer-events: none;
     }
 
-    .hero-content { position: relative; z-index: 2; max-width: 820px; }
+    .hero-content { position: relative; z-index: 2; max-width: 860px; }
+
+    .hero-content::before {
+      content: '';
+      position: absolute;
+      inset: -40px -28px;
+      z-index: -1;
+      background: rgba(255,255,255,0.48);
+      border: 1px solid rgba(255,255,255,0.72);
+      border-radius: 32px;
+      box-shadow: 0 30px 90px rgba(10,10,20,0.06);
+      backdrop-filter: blur(6px);
+      -webkit-backdrop-filter: blur(6px);
+      opacity: 0.72;
+    }
 
     .hero-badge {
       display: inline-flex;
@@ -257,7 +317,7 @@
     }
 
     /* ===== SECTION BASE ===== */
-    section { padding: 100px 6vw; }
+    section { padding: 100px 6vw; scroll-margin-top: 86px; }
 
     .section-label {
       font-size: 0.75rem;
@@ -309,13 +369,14 @@
     }
 
     .stat-card {
-      background: var(--white);
+      background: rgba(255,255,255,0.92);
       border-radius: var(--radius);
       padding: 28px 24px;
-      border: 1px solid var(--gray-200);
-      transition: transform var(--transition), box-shadow var(--transition);
+      border: 1px solid rgba(79,110,247,0.12);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+      box-shadow: 0 12px 38px rgba(10,10,20,0.04);
     }
-    .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); }
+    .stat-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-md); border-color: rgba(79,110,247,0.28); }
     .stat-card:nth-child(2) { margin-top: 24px; }
     .stat-card:nth-child(4) { margin-top: -24px; }
 
@@ -344,14 +405,14 @@
 
     .beneficios-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 24px;
       max-width: 1100px;
       margin: 0 auto;
     }
 
     .beneficio-card {
-      background: var(--off-white);
+      background: linear-gradient(180deg, var(--white), var(--off-white));
       border: 1px solid var(--gray-200);
       border-radius: var(--radius);
       padding: 32px 24px;
@@ -388,6 +449,732 @@
       color: var(--gray-600);
       line-height: 1.6;
     }
+
+
+
+    /* ===== COMO FUNCIONA ===== */
+    #como-funciona {
+      background: var(--off-white);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #como-funciona::before,
+    #simulador::before {
+      content: '';
+      position: absolute;
+      width: 360px;
+      height: 360px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,110,247,0.12), transparent 70%);
+      pointer-events: none;
+    }
+
+    #como-funciona::before {
+      top: -140px;
+      right: -120px;
+    }
+
+    .center-header {
+      text-align: center;
+      max-width: 680px;
+      margin: 0 auto 56px;
+    }
+    .center-header .section-sub { margin: 0 auto; }
+
+    .funciona-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-width: 1120px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .passo-card {
+      background: rgba(255,255,255,0.9);
+      border: 1px solid rgba(79,110,247,0.12);
+      border-radius: 20px;
+      padding: 28px 22px;
+      box-shadow: 0 14px 42px rgba(10,10,20,0.05);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .passo-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(79,110,247,0.28);
+    }
+
+    .passo-number {
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 14px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.86rem;
+      font-weight: 800;
+      margin-bottom: 18px;
+      box-shadow: 0 10px 30px rgba(79,110,247,0.28);
+    }
+
+    .passo-title {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 10px;
+      letter-spacing: -0.01em;
+    }
+
+    .passo-desc {
+      font-size: 0.82rem;
+      line-height: 1.65;
+      color: var(--gray-600);
+    }
+
+    /* ===== PRÉVIAS QUE VENDEM ===== */
+    #previas { background: var(--white); }
+
+    .previas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .preview-card {
+      background: linear-gradient(180deg, var(--white), var(--off-white));
+      border: 1px solid var(--gray-200);
+      border-radius: 22px;
+      padding: 18px;
+      box-shadow: 0 14px 42px rgba(10,10,20,0.05);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .preview-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(79,110,247,0.25);
+    }
+
+    .preview-frame {
+      border-radius: 18px;
+      overflow: hidden;
+      background: var(--black);
+      border: 1px solid rgba(10,10,20,0.08);
+      min-height: 190px;
+      position: relative;
+    }
+
+    .preview-topbar {
+      height: 28px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0 12px;
+    }
+    .preview-dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.45);
+    }
+
+    .preview-hero {
+      min-height: 162px;
+      padding: 22px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 85% 18%, rgba(123,147,255,0.45), transparent 42%),
+        linear-gradient(135deg, #0a0a0f, #18204a);
+    }
+
+    .preview-tag {
+      display: inline-flex;
+      padding: 5px 10px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.8);
+      font-size: 0.66rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .preview-title {
+      font-size: 1.18rem;
+      line-height: 1.2;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      max-width: 230px;
+      margin-bottom: 10px;
+    }
+
+    .preview-lines span {
+      display: block;
+      height: 7px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.24);
+      margin-bottom: 7px;
+    }
+    .preview-lines span:nth-child(1) { width: 72%; }
+    .preview-lines span:nth-child(2) { width: 52%; }
+
+    .preview-body {
+      padding: 18px 4px 4px;
+    }
+    .preview-name {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 8px;
+    }
+    .preview-desc {
+      font-size: 0.82rem;
+      line-height: 1.6;
+      color: var(--gray-600);
+      margin-bottom: 16px;
+    }
+    .preview-mini-cta {
+      display: inline-flex;
+      align-items: center;
+      color: var(--blue);
+      font-size: 0.82rem;
+      font-weight: 700;
+      text-decoration: none;
+    }
+
+    /* ===== SIMULADOR ===== */
+    #simulador {
+      background: var(--off-white);
+      position: relative;
+      overflow: hidden;
+    }
+    #simulador::before {
+      bottom: -160px;
+      left: -120px;
+    }
+
+    .simulador-grid {
+      display: grid;
+      grid-template-columns: 0.92fr 1.08fr;
+      gap: 28px;
+      align-items: stretch;
+      max-width: 1120px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .simulator-panel,
+    .simulator-preview {
+      background: rgba(255,255,255,0.92);
+      border: 1px solid rgba(79,110,247,0.14);
+      border-radius: 24px;
+      box-shadow: 0 18px 58px rgba(10,10,20,0.06);
+    }
+
+    .simulator-panel { padding: 32px; }
+
+    .simulator-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border-radius: 50px;
+      background: rgba(79,110,247,0.08);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .simulator-panel .section-title { margin-bottom: 14px; }
+    .simulator-panel .section-sub { max-width: 100%; margin-bottom: 26px; }
+
+    .simulator-label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--black);
+      margin-bottom: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .simulator-options {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+      margin-bottom: 22px;
+    }
+
+    .sim-option {
+      border: 1px solid var(--gray-200);
+      background: var(--white);
+      color: var(--gray-600);
+      border-radius: 14px;
+      padding: 12px 14px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-align: left;
+      transition: background var(--transition), color var(--transition), border-color var(--transition), transform var(--transition);
+    }
+    .sim-option:hover {
+      transform: translateY(-2px);
+      border-color: rgba(79,110,247,0.32);
+      color: var(--blue);
+    }
+    .sim-option.active {
+      background: var(--blue);
+      color: var(--white);
+      border-color: var(--blue);
+      box-shadow: 0 12px 32px rgba(79,110,247,0.22);
+    }
+
+    .sim-result {
+      border-radius: 18px;
+      background: linear-gradient(180deg, rgba(79,110,247,0.08), rgba(79,110,247,0.03));
+      border: 1px solid rgba(79,110,247,0.12);
+      padding: 18px;
+      margin-bottom: 22px;
+    }
+    .sim-result strong {
+      display: block;
+      color: var(--black);
+      font-size: 0.9rem;
+      margin-bottom: 6px;
+    }
+    .sim-result span {
+      display: block;
+      color: var(--gray-600);
+      font-size: 0.82rem;
+      line-height: 1.6;
+    }
+
+    .simulator-preview {
+      padding: 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 460px;
+    }
+
+    .fake-browser {
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--black);
+      box-shadow: 0 24px 70px rgba(10,10,20,0.18);
+    }
+
+    .fake-browser-bar {
+      height: 36px;
+      background: rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 0 14px;
+    }
+    .fake-browser-bar span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.38);
+    }
+
+    .fake-site {
+      min-height: 382px;
+      padding: 34px;
+      color: var(--white);
+      background:
+        radial-gradient(circle at 82% 20%, rgba(123,147,255,0.48), transparent 34%),
+        radial-gradient(circle at 20% 84%, rgba(79,110,247,0.28), transparent 30%),
+        linear-gradient(135deg, #090a12, #151a38);
+    }
+
+    .fake-site-badge {
+      display: inline-flex;
+      padding: 6px 12px;
+      border-radius: 50px;
+      background: rgba(255,255,255,0.12);
+      color: rgba(255,255,255,0.78);
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .fake-site h3 {
+      font-size: clamp(1.7rem, 4vw, 2.6rem);
+      line-height: 1.05;
+      letter-spacing: -0.05em;
+      max-width: 420px;
+      margin-bottom: 14px;
+    }
+
+    .fake-site p {
+      color: rgba(255,255,255,0.66);
+      max-width: 380px;
+      line-height: 1.7;
+      font-size: 0.92rem;
+      margin-bottom: 22px;
+    }
+
+    .fake-site-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 50px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.84rem;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    .fake-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .fake-stat {
+      padding: 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .fake-stat strong {
+      display: block;
+      font-size: 1.1rem;
+      margin-bottom: 4px;
+    }
+    .fake-stat span {
+      color: rgba(255,255,255,0.55);
+      font-size: 0.72rem;
+      line-height: 1.4;
+    }
+
+
+    /* ===== PROVAS E CONFIANÇA ===== */
+    #provas { background: var(--white); }
+
+    .proof-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      max-width: 1120px;
+      margin: 0 auto 28px;
+    }
+
+    .proof-mini {
+      background: linear-gradient(180deg, var(--white), var(--off-white));
+      border: 1px solid var(--gray-200);
+      border-radius: 18px;
+      padding: 20px;
+      box-shadow: 0 12px 34px rgba(10,10,20,0.04);
+    }
+    .proof-mini strong {
+      display: block;
+      color: var(--blue);
+      font-size: 1.45rem;
+      line-height: 1;
+      margin-bottom: 8px;
+      letter-spacing: -0.04em;
+    }
+    .proof-mini span {
+      color: var(--gray-600);
+      font-size: 0.8rem;
+      line-height: 1.45;
+      font-weight: 500;
+    }
+
+    .provas-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      max-width: 1120px;
+      margin: 0 auto;
+    }
+
+    .prova-card {
+      background: var(--white);
+      border: 1px solid rgba(79,110,247,0.14);
+      border-radius: 22px;
+      padding: 28px;
+      box-shadow: 0 18px 54px rgba(10,10,20,0.06);
+      transition: transform var(--transition), box-shadow var(--transition), border-color var(--transition);
+    }
+    .prova-card:hover {
+      transform: translateY(-6px);
+      box-shadow: var(--shadow-md);
+      border-color: rgba(79,110,247,0.3);
+    }
+
+    .prova-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      background: rgba(79,110,247,0.09);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      margin-bottom: 18px;
+    }
+    .prova-card h3 {
+      font-size: 1rem;
+      color: var(--black);
+      margin-bottom: 10px;
+      letter-spacing: -0.02em;
+    }
+    .prova-card p {
+      color: var(--gray-600);
+      font-size: 0.84rem;
+      line-height: 1.7;
+      margin-bottom: 18px;
+    }
+    .prova-note {
+      display: inline-flex;
+      padding: 7px 12px;
+      border-radius: 50px;
+      background: rgba(79,110,247,0.08);
+      color: var(--blue);
+      font-size: 0.72rem;
+      font-weight: 800;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    /* ===== APÓS ESCOLHER PLANO ===== */
+    #pos-plano {
+      background: var(--black);
+      color: var(--white);
+      position: relative;
+      overflow: hidden;
+    }
+    #pos-plano::before {
+      content: '';
+      position: absolute;
+      inset: auto -12rem -14rem auto;
+      width: 34rem;
+      height: 34rem;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(79,110,247,0.24), transparent 70%);
+      pointer-events: none;
+    }
+    #pos-plano .section-title { color: var(--white); }
+    #pos-plano .section-sub { color: rgba(255,255,255,0.58); }
+
+    .pos-plano-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 32px;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pos-steps {
+      display: grid;
+      gap: 14px;
+    }
+    .pos-step {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 14px;
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.09);
+    }
+    .pos-step span {
+      width: 34px;
+      height: 34px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 12px;
+      background: var(--blue);
+      color: var(--white);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+    .pos-step strong {
+      display: block;
+      font-size: 0.92rem;
+      margin-bottom: 4px;
+    }
+    .pos-step p {
+      color: rgba(255,255,255,0.58);
+      font-size: 0.8rem;
+      line-height: 1.55;
+    }
+
+    /* ===== FAQ ===== */
+    #faq { background: var(--off-white); }
+
+    .faq-wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      display: grid;
+      gap: 12px;
+    }
+
+    .faq-item {
+      background: var(--white);
+      border: 1px solid rgba(79,110,247,0.12);
+      border-radius: 18px;
+      box-shadow: 0 12px 38px rgba(10,10,20,0.04);
+      overflow: hidden;
+    }
+    .faq-item summary {
+      cursor: pointer;
+      list-style: none;
+      padding: 20px 22px;
+      color: var(--black);
+      font-size: 0.92rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+    }
+    .faq-item summary::-webkit-details-marker { display: none; }
+    .faq-item summary::after {
+      content: '+';
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: rgba(79,110,247,0.08);
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex: 0 0 auto;
+      font-size: 1rem;
+      font-weight: 800;
+      transition: transform var(--transition), background var(--transition);
+    }
+    .faq-item[open] summary::after {
+      content: '–';
+      background: var(--blue);
+      color: var(--white);
+    }
+    .faq-answer {
+      padding: 0 22px 20px;
+      color: var(--gray-600);
+      font-size: 0.86rem;
+      line-height: 1.7;
+    }
+
+    /* ===== TERMOS SIMPLES ===== */
+    #termos { background: var(--white); }
+
+    .termos-card {
+      max-width: 980px;
+      margin: 0 auto;
+      border-radius: 26px;
+      padding: 34px;
+      background: linear-gradient(180deg, var(--white), var(--off-white));
+      border: 1px solid var(--gray-200);
+      box-shadow: 0 18px 58px rgba(10,10,20,0.06);
+    }
+    .termos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-top: 26px;
+    }
+    .termo-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      padding: 16px;
+      border-radius: 16px;
+      background: var(--white);
+      border: 1px solid rgba(79,110,247,0.1);
+    }
+    .termo-item span {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background: rgba(79,110,247,0.1);
+      color: var(--blue);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.76rem;
+      font-weight: 800;
+      flex: 0 0 auto;
+    }
+    .termo-item p {
+      color: var(--gray-600);
+      font-size: 0.82rem;
+      line-height: 1.55;
+    }
+    .termo-item strong {
+      display: block;
+      color: var(--black);
+      margin-bottom: 3px;
+      font-size: 0.86rem;
+    }
+
+    /* ===== CTA FIXO MOBILE ===== */
+    .mobile-sticky-cta {
+      display: none;
+      position: fixed;
+      left: 14px;
+      right: 14px;
+      bottom: 14px;
+      z-index: 120;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 10px 10px 10px 16px;
+      border-radius: 20px;
+      background: rgba(10,10,15,0.92);
+      color: var(--white);
+      text-decoration: none;
+      box-shadow: 0 18px 60px rgba(10,10,20,0.26);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+    .mobile-sticky-cta strong {
+      display: block;
+      font-size: 0.82rem;
+      line-height: 1.2;
+    }
+    .mobile-sticky-cta span {
+      color: rgba(255,255,255,0.58);
+      font-size: 0.72rem;
+    }
+    .mobile-sticky-cta b {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50px;
+      padding: 10px 14px;
+      background: #25D366;
+      color: var(--white);
+      font-size: 0.78rem;
+      white-space: nowrap;
+    }
+
 
     /* ===== PLANOS ===== */
     #planos { background: var(--off-white); }
@@ -468,6 +1255,7 @@
     .plano-card:hover {
       transform: translateY(-6px);
       box-shadow: var(--shadow-md);
+      border-color: rgba(79,110,247,0.24);
     }
 
     /* Plano premium destacado */
@@ -551,7 +1339,7 @@
     }
     .plano-features li {
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 10px;
       font-size: 0.85rem;
       font-weight: 500;
@@ -563,6 +1351,7 @@
       content: '';
       width: 18px; height: 18px;
       min-width: 18px;
+      margin-top: 2px;
       background: rgba(79,110,247,0.1);
       border-radius: 50%;
       display: flex;
@@ -642,6 +1431,8 @@
     }
     .whatsapp-btn svg { width: 22px; height: 22px; }
 
+
+
     /* ===== RODAPÉ ===== */
     footer {
       background: var(--black);
@@ -698,6 +1489,14 @@
 
       .sobre-grid { grid-template-columns: 1fr; gap: 48px; }
       .sobre-visual { order: -1; }
+      .funciona-grid,
+      .previas-grid,
+      .simulador-grid,
+      .proof-strip,
+      .provas-grid,
+      .pos-plano-grid,
+      .termos-grid { grid-template-columns: 1fr; }
+      .simulator-preview { min-height: auto; }
 
       .planos-grid { grid-template-columns: 1fr; max-width: 400px; }
       .plano-card.featured { transform: scale(1); }
@@ -708,14 +1507,44 @@
 
     @media (max-width: 600px) {
       section { padding: 72px 5vw; }
-      .beneficios-grid { grid-template-columns: 1fr 1fr; }
+      #hero { padding-top: 112px; }
+      .hero-content::before { inset: -24px -14px; border-radius: 24px; }
+      .hero-actions { width: 100%; }
+      .btn-primary, .btn-outline, .whatsapp-btn {
+        width: 100%;
+        justify-content: center;
+      }
+      .beneficios-grid,
+      .simulator-options,
+      .fake-stats { grid-template-columns: 1fr; }
+      .simulator-panel,
+      .simulator-preview,
+      .termos-card,
+      .web-form { padding: 24px; }
+      .fake-site { padding: 26px; }
+      .sobre-visual { grid-template-columns: 1fr; }
+      .stat-card:nth-child(2),
+      .stat-card:nth-child(4) { margin-top: 0; }
+      .plano-card { padding: 32px 24px; }
+      .plano-price .amount { font-size: 2.6rem; }
+      body { padding-bottom: 86px; }
+      .mobile-sticky-cta { display: flex; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
 
     /* Mobile nav */
     .mobile-nav {
       display: none;
       position: fixed;
-      top: 68px; left: 0; right: 0;
+      top: 72px; left: 0; right: 0;
       background: var(--white);
       border-bottom: 1px solid var(--gray-200);
       padding: 20px 6vw;
@@ -724,7 +1553,10 @@
       gap: 4px;
       box-shadow: 0 8px 32px rgba(10,10,20,0.1);
     }
-    .mobile-nav.open { display: flex; }
+    .mobile-nav.open {
+      display: flex;
+      animation: fadeUp 0.25s ease both;
+    }
     .mobile-nav a {
       font-size: 0.9rem;
       font-weight: 500;
@@ -737,8 +1569,21 @@
     .mobile-nav a:last-child { border-bottom: none; color: var(--blue); font-weight: 600; }
     .mobile-nav a:hover { color: var(--blue); }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "WebAtlas",
+    "url": "https://webatlas.com.br/",
+    "description": "Criação de sites profissionais, rápidos e responsivos para negócios que querem receber clientes pelo WhatsApp.",
+    "areaServed": "BR",
+    "telephone": "+55 75 99805-3960"
+  }
+  </script>
 </head>
 <body>
+
 
   <!-- ===== NAVBAR ===== -->
   <nav id="navbar">
@@ -746,12 +1591,12 @@
     <ul class="nav-links">
       <li><a href="#sobre">Sobre</a></li>
       <li><a href="#beneficios">Benefícios</a></li>
+      <li><a href="#como-funciona">Como funciona</a></li>
+      <li><a href="#provas">Provas</a></li>
+      <li><a href="#faq">FAQ</a></li>
       <li><a href="#planos">Planos</a></li>
-      <li><a href="#contato">Contato</a></li>
-<li><a href="https://suporte.webatlas.com.br/">Suporte</a></li>
-      <li><a href="#planos" class="nav-cta">Ver Planos</a></li>
     </ul>
-    <button class="nav-hamburger" id="hamburger" aria-label="Menu">
+    <button class="nav-hamburger" id="hamburger" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileNav">
       <span></span><span></span><span></span>
     </button>
   </nav>
@@ -760,12 +1605,12 @@
 <div class="mobile-nav" id="mobileNav">
   <a href="#sobre" onclick="closeMobileNav()">Sobre</a>
   <a href="#beneficios" onclick="closeMobileNav()">Benefícios</a>
+  <a href="#como-funciona" onclick="closeMobileNav()">Como funciona</a>
+  <a href="#provas" onclick="closeMobileNav()">Provas</a>
+  <a href="#faq" onclick="closeMobileNav()">FAQ</a>
   <a href="#planos" onclick="closeMobileNav()">Planos</a>
-  <a href="#contato" onclick="closeMobileNav()">Contato</a>
-  <a href="https://suporte.webatlas.com.br/" onclick="closeMobileNav()">Suporte</a>
-  <a href="#planos" onclick="closeMobileNav()">Ver Planos →</a>
 </div>
-  <!-- ===== HERO ===== -->
+<!-- ===== HERO ===== -->
 <section id="hero">
   <div class="hero-content">
     
@@ -785,9 +1630,9 @@
 
     <div class="hero-actions">
       
-      <a href="https://wa.me/5575998053960?text=Quero+um+site+que+traz+clientes" target="_blank" class="btn-primary">
+      <a href="https://wa.me/5575998053960?text=Quero+um+site+que+traz+clientes" target="_blank" rel="noopener noreferrer" class="btn-primary">
         Falar no WhatsApp
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
           <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </a>
@@ -800,14 +1645,14 @@
 
   <!-- ===== SOBRE ===== -->
   <section id="sobre">
-<div class="sobre-grid">
-  <div class="sobre-text reveal">
-    <p class="section-label">Sobre nós</p>
-    <h2 class="section-title">Sites que trazem clientes<br>todos os dias</h2>
-    <p class="section-sub">Criamos sites rápidos, diretos e focados em fazer o cliente te chamar no WhatsApp 📲</p>
-    <p>Na WebAtlas, cada projeto é pensado para transformar visitas em contatos reais. Sem enrolação, sem complicação — apenas um site que funciona e gera resultado para o seu negócio.</p>
-  </div>
-</div>
+    <div class="sobre-grid">
+      <div class="sobre-text reveal">
+        <p class="section-label">Sobre nós</p>
+        <h2 class="section-title">Sites que trazem clientes<br>todos os dias</h2>
+        <p class="section-sub">Criamos sites rápidos, diretos e focados em fazer o cliente te chamar no WhatsApp 📲</p>
+        <p>Na WebAtlas, cada projeto é pensado para transformar visitas em contatos reais. Sem enrolação, sem complicação: apenas um site que funciona e gera resultado para o seu negócio.</p>
+      </div>
+
       <div class="sobre-visual reveal reveal-delay-1">
         <div class="stat-card">
           <div class="stat-num">+120</div>
@@ -822,8 +1667,8 @@
           <div class="stat-label">Tempo médio de entrega</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">24/7</div>
-          <div class="stat-label">Suporte disponível</div>
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Foco no WhatsApp</div>
         </div>
       </div>
     </div>
@@ -864,11 +1709,127 @@
     </div>
 
     <div class="beneficio-card reveal reveal-delay-2">
-      <div class="beneficio-icon">🤝</div>
-      <div class="beneficio-name">Suporte de verdade</div>
-      <div class="beneficio-desc">Te ajudamos antes, durante e depois — sem sumir.</div>
+      <div class="beneficio-icon">🛠️</div>
+      <div class="beneficio-name">Ajustes sem dor</div>
+      <div class="beneficio-desc">Textos, fotos e detalhes organizados para o site ficar redondo.</div>
     </div>
 
+  </div>
+</section>
+
+<!-- ===== COMO FUNCIONA ===== -->
+<section id="como-funciona">
+  <div class="center-header reveal">
+    <p class="section-label">Como funciona</p>
+    <h2 class="section-title">Do primeiro contato ao site no ar<br>sem confusão</h2>
+    <p class="section-sub">Um processo simples, rápido e feito para o cliente entender o valor antes de comprar.</p>
+  </div>
+
+  <div class="funciona-grid">
+    <div class="passo-card reveal">
+      <div class="passo-number">01</div>
+      <h3 class="passo-title">Entendemos seu negócio</h3>
+      <p class="passo-desc">Você conta o serviço, cidade, público e objetivo. A gente transforma isso em uma página com direção de venda.</p>
+    </div>
+
+    <div class="passo-card reveal reveal-delay-1">
+      <div class="passo-number">02</div>
+      <h3 class="passo-title">Criamos uma prévia</h3>
+      <p class="passo-desc">Você vê uma ideia visual antes de fechar. Sem enrolação, sem reunião gigante, sem arquivo perdido no limbo.</p>
+    </div>
+
+    <div class="passo-card reveal reveal-delay-2">
+      <div class="passo-number">03</div>
+      <h3 class="passo-title">Ajustamos os detalhes</h3>
+      <p class="passo-desc">Cores, textos, fotos, botões e informações entram no lugar certo para deixar tudo com cara profissional.</p>
+    </div>
+
+    <div class="passo-card reveal reveal-delay-3">
+      <div class="passo-number">04</div>
+      <h3 class="passo-title">Publicamos e conectamos</h3>
+      <p class="passo-desc">O site fica no ar com domínio, botão de WhatsApp, visual responsivo e pronto para receber clientes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROVAS E CONFIANÇA ===== -->
+<section id="provas">
+  <div class="center-header reveal">
+    <p class="section-label">Provas de confiança</p>
+    <h2 class="section-title">Antes de fechar, o cliente precisa sentir segurança</h2>
+    <p class="section-sub">Por isso a WebAtlas deixa o processo claro: prévia visual, site responsivo, WhatsApp conectado e ajustes depois da entrega.</p>
+  </div>
+
+  <div class="proof-strip">
+    <div class="proof-mini reveal"><strong>Prévia</strong><span>Você pode mostrar uma ideia visual antes da contratação.</span></div>
+    <div class="proof-mini reveal reveal-delay-1"><strong>Mobile</strong><span>Layout pensado primeiro para celular, onde o cliente realmente está.</span></div>
+    <div class="proof-mini reveal reveal-delay-2"><strong>WhatsApp</strong><span>Botões e textos focados em gerar conversa com cliente.</span></div>
+    <div class="proof-mini reveal reveal-delay-3"><strong>Ajustes</strong><span>Pequenas melhorias para manter o site alinhado com o negócio.</span></div>
+  </div>
+
+  <div class="provas-grid">
+    <div class="prova-card reveal">
+      <div class="prova-icon">🧩</div>
+      <h3>Prévia antes de contratar</h3>
+      <p>O cliente não precisa comprar no escuro. A ideia é mostrar uma versão inicial para ele entender o visual, a proposta e o caminho de conversão.</p>
+      <span class="prova-note">Mais confiança</span>
+    </div>
+
+    <div class="prova-card reveal reveal-delay-1">
+      <div class="prova-icon">📲</div>
+      <h3>Foco em conversão real</h3>
+      <p>Cada seção trabalha para responder dúvidas, mostrar valor e levar o visitante para o WhatsApp sem ficar perdido na página.</p>
+      <span class="prova-note">Mais contatos</span>
+    </div>
+
+    <div class="prova-card reveal reveal-delay-2">
+      <div class="prova-icon">🔒</div>
+      <h3>Entrega com estrutura</h3>
+      <p>Domínio, hospedagem, SSL, responsividade e configurações são apresentados de forma simples para o cliente saber exatamente o que está recebendo.</p>
+      <span class="prova-note">Mais clareza</span>
+    </div>
+  </div>
+</section>
+
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="center-header reveal">
+    <p class="section-label">Perguntas frequentes</p>
+    <h2 class="section-title">Dúvidas que normalmente aparecem antes de fechar</h2>
+    <p class="section-sub">Respostas rápidas para o cliente entender o serviço sem precisar caçar informação igual bug em produção.</p>
+  </div>
+
+  <div class="faq-wrap">
+    <details class="faq-item reveal" open>
+      <summary>Preciso pagar taxa de criação?</summary>
+      <div class="faq-answer">Não. Os planos foram pensados em formato mensal, sem taxa de criação separada. O cliente escolhe o plano e seguimos com a prévia e publicação.</div>
+    </details>
+
+    <details class="faq-item reveal reveal-delay-1">
+      <summary>Em quanto tempo o site fica pronto?</summary>
+      <div class="faq-answer">O prazo pode variar conforme o plano, quantidade de páginas e envio das informações. Em geral, a proposta da WebAtlas é trabalhar com entrega rápida e processo simples.</div>
+    </details>
+
+    <details class="faq-item reveal reveal-delay-2">
+      <summary>O site funciona bem no celular?</summary>
+      <div class="faq-answer">Sim. O layout é pensado para celular primeiro, com botões grandes, leitura fácil e caminho direto para o WhatsApp.</div>
+    </details>
+
+    <details class="faq-item reveal">
+      <summary>Posso pedir alterações?</summary>
+      <div class="faq-answer">Sim. Ajustes importantes de texto, fotos, cores e informações podem ser alinhados durante o processo, conforme o plano contratado.</div>
+    </details>
+
+    <details class="faq-item reveal reveal-delay-1">
+      <summary>Domínio e hospedagem estão inclusos?</summary>
+      <div class="faq-answer">Os planos informam o que está incluso. Alguns já incluem domínio, hospedagem, SSL e ajustes básicos. O ideal é escolher o plano que combina com o tamanho do negócio.</div>
+    </details>
+
+    <details class="faq-item reveal reveal-delay-2">
+      <summary>Como o site gera clientes?</summary>
+      <div class="faq-answer">Ele organiza sua oferta, mostra benefícios, responde dúvidas e usa chamadas estratégicas para levar o visitante ao WhatsApp. Não é só beleza: é caminho de conversão.</div>
+    </details>
   </div>
 </section>
 
@@ -901,12 +1862,11 @@
         <li>Design limpo e objetivo</li>
         <li>Layout responsivo para celular</li>
         <li>Botão que leva clientes direto para seu WhatsApp 📲</li>
-        <li>Suporte padrão</li>
         <li>1 domínio incluso</li>
       </ul>
 
       <button class="btn-plano btn-plano-outline" onclick="comprarPlano('Início Rápido')">
-        Quero começar a aparecer
+        Quero este plano no WhatsApp
       </button>
     </div>
 
@@ -931,7 +1891,6 @@
         <li>Design moderno e personalizado</li>
         <li>Layout responsivo premium</li>
         <li>Botão que leva clientes direto para seu WhatsApp 📲</li>
-        <li>Suporte prioritário</li>
         <li>Otimização básica para Google (SEO)</li>
         <li>Domínio grátis 🎯</li>
         <li>Hospedagem premium ⚡</li>
@@ -939,7 +1898,7 @@
       </ul>
 
       <button class="btn-plano btn-plano-featured" onclick="comprarPlano('Mais Clientes')">
-        Quero mais clientes no WhatsApp
+        Quero este plano no WhatsApp
       </button>
     </div>
 
@@ -962,7 +1921,6 @@
         <li>Design avançado sob medida</li>
         <li>Layout responsivo premium</li>
         <li>Integrações completas</li>
-        <li>Suporte completo</li>
         <li>SEO avançado</li>
         <li>Relatório de desempenho</li>
         <li>2 domínios inclusos 🌐🌐</li>
@@ -972,38 +1930,26 @@
       </ul>
 
       <button class="btn-plano btn-plano-outline" onclick="comprarPlano('Dominação Local')">
-        Quero dominar minha cidade
+        Quero este plano no WhatsApp
       </button>
     </div>
 
   </div>
 </section>
 
-  <!-- ===== CONTATO ===== -->
- <section id="contato">
-  <div class="contato-inner reveal">
-    <p class="section-label">Fale conosco</p>
-    <h2 class="section-title">Quer mais clientes<br>no seu WhatsApp?</h2>
-    
-    <p class="section-sub" style="margin: 0 auto;">
-      Eu posso te mostrar como seu site pode começar a trazer clientes todos os dias. 
-      Me chama agora e eu te mostro uma prévia sem compromisso 👇
-    </p>
+  
 
-    <a href="https://wa.me/5575998053960?text=Quero+um+site+que+traz+clientes" target="_blank" class="whatsapp-btn">
-      <svg viewBox="0 0 24 24" fill="currentColor">
-        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
-      </svg>
-      Falar no WhatsApp agora
-    </a>
-  </div>
-</section>
-
-  <!-- ===== RODAPÉ ===== -->
+<!-- ===== RODAPÉ ===== -->
   <footer>
     <div class="footer-logo">Web<span class="dot">Atlas</span></div>
-    <p class="footer-text">© 2026 WebAtlas. Todos os direitos reservados.Desenvolvido por Fábio</p>
+    <p class="footer-text">© 2026 WebAtlas. Todos os direitos reservados - Desenvolvido por Fábio</p>
   </footer>
+
+  <a class="mobile-sticky-cta" href="https://wa.me/5575998053960?text=Quero+uma+prévia+gratuita+da+WebAtlas" target="_blank" rel="noopener noreferrer" aria-label="Pedir prévia gratuita pelo WhatsApp">
+    <span><strong>Quer uma prévia grátis?</strong><span>Chama no WhatsApp agora</span></span>
+    <b>WhatsApp</b>
+  </a>
+
 
   <!-- ===== JAVASCRIPT ===== -->
   <script>
@@ -1018,11 +1964,17 @@
     const mobileNav = document.getElementById('mobileNav');
 
     hamburger.addEventListener('click', () => {
-      mobileNav.classList.toggle('open');
+      const isOpen = mobileNav.classList.toggle('open');
+      hamburger.classList.toggle('active', isOpen);
+      hamburger.setAttribute('aria-expanded', String(isOpen));
+      hamburger.setAttribute('aria-label', isOpen ? 'Fechar menu' : 'Abrir menu');
     });
 
     function closeMobileNav() {
       mobileNav.classList.remove('open');
+      hamburger.classList.remove('active');
+      hamburger.setAttribute('aria-expanded', 'false');
+      hamburger.setAttribute('aria-label', 'Abrir menu');
     }
 
     /* ===== SCROLL REVEAL ===== */
@@ -1043,10 +1995,17 @@
 
     // Preços mensais base
     const precos = {
-      basico: 70,
-      premium: 150,
-      profissional: 250
+      basico: 79.90,
+      premium: 119.99,
+      profissional: 199.90
     };
+
+    function formatarPreco(valor) {
+      return valor.toLocaleString('pt-BR', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2
+      });
+    }
 
     function toggleBilling() {
       isAnnual = !isAnnual;
@@ -1056,6 +2015,8 @@
       const labelAnual = document.getElementById('label-anual');
       const saveBadge = document.getElementById('saveBadge');
 
+      if (!track || !labelMensal || !labelAnual || !saveBadge) return;
+
       track.classList.toggle('annual', isAnnual);
       labelMensal.classList.toggle('active', !isAnnual);
       labelAnual.classList.toggle('active', isAnnual);
@@ -1063,12 +2024,11 @@
 
       // Atualiza preços (desconto de 20% no anual)
       const desconto = isAnnual ? 0.8 : 1;
-      document.getElementById('price-basico').textContent = Math.round(precos.basico * desconto);
-      document.getElementById('price-premium').textContent = Math.round(precos.premium * desconto);
-      document.getElementById('price-profissional').textContent = Math.round(precos.profissional * desconto);
+      document.getElementById('price-basico').textContent = formatarPreco(precos.basico * desconto);
+      document.getElementById('price-premium').textContent = formatarPreco(precos.premium * desconto);
+      document.getElementById('price-profissional').textContent = formatarPreco(precos.profissional * desconto);
     }
-
-    /* ===== FUNÇÃO WHATSAPP ===== */
+    /* ===== FUNÇÕES DE CONVERSÃO ===== */
     const WHATSAPP_NUMBER = '5575998053960';
 
     /**
@@ -1078,7 +2038,7 @@
     function comprarPlano(plano) {
       const mensagem = `Olá, tenho interesse no plano ${plano} da WebAtlas e quero começar a receber clientes pelo WhatsApp`;
       const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(mensagem)}`;
-      window.open(url, '_blank');
+      window.open(url, '_blank', 'noopener,noreferrer');
     }
   </script>
 </body>
