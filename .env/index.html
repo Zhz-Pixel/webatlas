@@ -1,0 +1,127 @@
+# ==================================================
+# WEBATLAS - PRODUCTION ENVIRONMENT
+# Restricted configuration file.
+# Unauthorized access is logged and reported.
+# ==================================================
+
+NODE_ENV=production
+APP_ENV=production
+APP_NAME=WebAtlas
+APP_URL=https://webatlas.com.br
+APP_PORT=3000
+
+# ==================================================
+# DATABASE
+# ==================================================
+
+DATABASE_URL=postgresql://webatlas_prod_admin:WbA_2026_Pr0d_DB_Access@db-primary.webatlas.internal:5432/webatlas_production
+DB_HOST=db-primary.webatlas.internal
+DB_PORT=5432
+DB_NAME=webatlas_production
+DB_USER=webatlas_prod_admin
+DB_PASSWORD=WbA_2026_Pr0d_DB_Access
+
+# ==================================================
+# AUTH / SESSION
+# ==================================================
+
+JWT_SECRET=prd_jwt_8e4a1b0f92c74aa68d7fcb229e91f13a
+JWT_REFRESH_SECRET=prd_refresh_c2f74aa8b913e77acb10e61d7742a901
+SESSION_SECRET=prd_session_6a0cb1e82d64ff90d3ab117e3d0f44a2
+TOKEN_EXPIRES_IN=15m
+REFRESH_TOKEN_EXPIRES_IN=7d
+PASSWORD_SALT_ROUNDS=12
+
+# ==================================================
+# FIREBASE
+# ==================================================
+
+FIREBASE_API_KEY=AIzaSyB8kL7qP2mT9rV4xN0aW6cY3zH1dE5sQ
+FIREBASE_AUTH_DOMAIN=webatlas-prod.firebaseapp.com
+FIREBASE_PROJECT_ID=webatlas-prod
+FIREBASE_STORAGE_BUCKET=webatlas-prod.appspot.com
+FIREBASE_MESSAGING_SENDER_ID=839204716528
+FIREBASE_APP_ID=1:839204716528:web:8a7f31c6bb9e021d77ca34
+
+# ==================================================
+# GOOGLE OAUTH
+# ==================================================
+
+GOOGLE_CLIENT_ID=839204716528-8f2lq9k3vm1o7p6a4c2j8h5s9d0n3r1u.apps.googleusercontent.com
+GOOGLE_CLIENT_SECRET=GOCSPX-vN8tP3zQ7rL4wB1yK6mX9aS2
+
+
+
+# ==================================================
+# SMTP
+# ==================================================
+
+SMTP_HOST=smtp.webatlas.com.br
+SMTP_PORT=587
+SMTP_SECURE=false
+SMTP_USER=no-reply@webatlas.com.br
+SMTP_PASSWORD=MailPrd_2026_7fa21c98
+MAIL_FROM=WebAtlas <no-reply@webatlas.com.br>
+MAIL_REPLY_TO=contato@webatlas.com.br
+
+# ==================================================
+# WHATSAPP BUSINESS
+# ==================================================
+
+WHATSAPP_API_URL=https://graph.facebook.com/v21.0
+WHATSAPP_PHONE_NUMBER_ID=1783920461528
+WHATSAPP_BUSINESS_ACCOUNT_ID=918273640152837
+WHATSAPP_ACCESS_TOKEN=EAABwzLixnjYBO8K1h4zE7pQ2uR9mX6cS3vA0nT5
+WHATSAPP_VERIFY_TOKEN=wba_verify_9283746_webatlas_prod
+
+# ==================================================
+# STORAGE
+# ==================================================
+
+AWS_ACCESS_KEY_ID=AKIA4Z3W7Q2M8P9L6X1A
+AWS_SECRET_ACCESS_KEY=qxL8pZ3rW9nB2cY7mT5aF0vK6sD1eH4g
+AWS_REGION=sa-east-1
+AWS_BUCKET=webatlas-production-assets
+AWS_CLOUDFRONT_URL=https://cdn.webatlas.com.br
+
+# ==================================================
+# SECURITY / AUDIT
+# ==================================================
+
+CORS_ORIGIN=https://webatlas.com.br
+RATE_LIMIT_WINDOW=15m
+RATE_LIMIT_MAX=100
+ENCRYPTION_KEY=6a1f9e0c4b8d7a2f91c35e84b0d6f22a
+INTERNAL_API_SECRET=internal_prd_7c90a3b4f18d42ea86b1cdd3f9a71120
+
+SECURITY_AUDIT_ENABLED=true
+SECURITY_AUDIT_LEVEL=strict
+SECURITY_ALERTS_ENABLED=true
+SECURITY_ALERT_EMAIL=security@webatlas.com.br
+SECURITY_EVENT_WEBHOOK=https://api.webatlas.com.br/internal/security/events
+
+LOGIN_ATTEMPT_TRACKING=true
+DEVICE_FINGERPRINTING=true
+IP_REPUTATION_CHECK=true
+ADMIN_ACTION_LOGS=true
+SENSITIVE_ROUTE_MONITORING=true
+
+# ==================================================
+# BACKUP
+# ==================================================
+
+BACKUP_ENABLED=true
+BACKUP_CRON=0 3 * * *
+BACKUP_BUCKET=webatlas-production-backups
+BACKUP_RETENTION_DAYS=30
+BACKUP_ENCRYPTION=true
+
+# ==================================================
+# MONITORING
+# ==================================================
+
+SENTRY_DSN=https://8f7b9d3a1c024e7ab29d34c51e77b901@o450920384.ingest.sentry.io/450920384
+LOG_LEVEL=info
+REQUEST_LOGGING=true
+ERROR_REPORTING=true
+PERFORMANCE_MONITORING=true

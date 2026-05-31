@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <link rel="icon" href="abc.png" type="image/png">
+  <meta charset="UTF-8">
+  <title>Admin Access</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #fff;
+      font-family: Arial, sans-serif;
+      color: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      width: 420px;
+      border: 1px solid #000;
+      padding: 25px;
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 16px;
+      letter-spacing: 2px;
+      margin: 0 0 15px 0;
+    }
+
+    .line {
+      border-top: 1px solid #000;
+      margin: 15px 0;
+    }
+
+    .info {
+      font-size: 13px;
+      text-align: center;
+      margin: 8px 0;
+    }
+
+    .ip, .device {
+      font-size: 18px;
+      font-weight: bold;
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .small {
+      font-size: 12px;
+      color: #666;
+      text-align: center;
+    }
+
+    .status {
+      font-size: 12px;
+      text-align: center;
+      color: #444;
+      margin-top: 10px;
+    }
+
+    .blink {
+      animation: blink 1s infinite;
+    }
+
+    @keyframes blink {
+      50% { opacity: 0.3; }
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>ADMIN PANEL ⚙</h2>
+
+  <div class="info">System Monitoring Active</div>
+
+  <div class="line"></div>
+
+  <div class="info">Detected IP Address:</div>
+  <div class="ip" id="ip">Loading...</div>
+
+  <div class="info">Device Identifier:</div>
+  <div class="device" id="device">Detecting...</div>
+
+  <div class="small" id="ua">...</div>
+
+  <div class="line"></div>
+
+  <div class="status blink" id="status">
+    Checking access integrity...
+  </div>
+
+  <div class="line"></div>
+
+  <div class="info">Secure endpoint • no authentication UI</div>
+</div>
+
+<script>
+// 🛰️ IP público
+fetch("https://api.ipify.org?format=json")
+  .then(r => r.json())
+  .then(data => {
+    document.getElementById("ip").innerText = data.ip;
+  })
+  .catch(() => {
+    document.getElementById("ip").innerText = "Unavailable";
+  });
+
+// 💻 device info (simulado + real possível via browser)
+const ua = navigator.userAgent;
+document.getElementById("ua").innerText = ua;
+
+// 🧠 cria um "nome de dispositivo" estilo rede interna
+function fakeDeviceName() {
+  const platform = navigator.platform || "UNKNOWN";
+  const rand = Math.floor(Math.random() * 900 + 100);
+
+  if (ua.includes("Windows")) return `WIN-DESKTOP-${rand}`;
+  if (ua.includes("Android")) return `ANDROID-${rand}`;
+  if (ua.includes("Mac")) return `MACBOOK-${rand}`;
+  if (ua.includes("Linux")) return `LINUX-DEVICE-${rand}`;
+
+  return `DEVICE-${platform}-${rand}`;
+}
+
+document.getElementById("device").innerText = fakeDeviceName();
+
+// 🪤 honeypot log
+fetch("/log-attempt", {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify({
+    page: "/admin",
+    time: new Date().toISOString(),
+    ip: "loading-client-side",
+    device: fakeDeviceName(),
+    userAgent: ua,
+    note: "honeypot access"
+  })
+}).catch(() => {});
+
+// 🧠 status
+setTimeout(() => {
+  document.getElementById("status").innerText =
+    "No Admin";
+}, 2000);
+
+</script>
+
+</body>
+</html>
